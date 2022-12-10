@@ -16,6 +16,8 @@
 		D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F47292CFFC9003B8BC3 /* Protain.swift */; };
 		D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F49292D041B003B8BC3 /* Home.swift */; };
 		D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F4C292D0931003B8BC3 /* Can.swift */; };
+		D4D8510529446CB300418D2E /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510429446CB300418D2E /* ViewExt.swift */; };
+		D4D8510829446DF700418D2E /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510729446DF700418D2E /* ImageHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		D49D5F47292CFFC9003B8BC3 /* Protain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protain.swift; sourceTree = "<group>"; };
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
+		D4D8510429446CB300418D2E /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
+		D4D8510729446DF700418D2E /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				D43AAB9E291F555400C7F3EC /* ProtainCalcApp.swift */,
+				D4D8510629446DE700418D2E /* Tools */,
 				D49D5F4B292D0921003B8BC3 /* Model */,
 				D49D5F44292CFEC4003B8BC3 /* View */,
 				D49D5F43292CFE37003B8BC3 /* Extentions */,
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				D43AABAE291F572700C7F3EC /* ColorExt.swift */,
+				D4D8510429446CB300418D2E /* ViewExt.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -112,6 +118,14 @@
 				D49D5F4C292D0931003B8BC3 /* Can.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D4D8510629446DE700418D2E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D4D8510729446DF700418D2E /* ImageHelper.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,8 +200,10 @@
 			files = (
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
 				D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */,
+				D4D8510829446DF700418D2E /* ImageHelper.swift in Sources */,
 				D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
+				D4D8510529446CB300418D2E /* ViewExt.swift in Sources */,
 				D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */,
 				D43AABAD291F56D200C7F3EC /* customModifier.swift in Sources */,
 				D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */,

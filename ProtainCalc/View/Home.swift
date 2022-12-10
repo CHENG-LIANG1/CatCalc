@@ -12,6 +12,52 @@ struct Home: View {
     
     var body: some View {
         ZStack {
+            
+            
+            List{
+                ForEach(0...30, id: \.self) {e in
+                    
+                    Text("滋奇 \(e)")
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 10)
+                                .background(.clear)
+                                .foregroundColor(Color.BackgroundColor)
+                                .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
+                                
+                        )
+                        .padding()
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                
+                            } label: {
+                                Label("Delete", systemImage: "minus.circle")
+                                    .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
+                            }
+                        
+              
+
+                        }
+                    
+                        .swipeActions(edge:.leading) {
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "pin")
+                                    .foregroundColor(.orange)
+                            }
+                            .tint(.clear)
+                            .clipShape(Circle())
+         
+                            
+  
+                        }
+               
+                    
+                }
+                .listStyle(.plain)
+            }
+            
             HStack {
                 Spacer()
                 VStack{

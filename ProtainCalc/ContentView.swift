@@ -12,10 +12,6 @@ struct ContentView: View {
 
     var body: some View {
         Home()
-            .font(.system(size: 30))
-            .tabItem {
-                Image(systemName: "house.fill")
-            }
 
     }
 }
