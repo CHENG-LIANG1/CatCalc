@@ -13,11 +13,13 @@ enum Meat: String {
     case Beef = "牛肉"
     case Fish = "鱼肉"
     case Rabbit = "兔肉"
+    case Deer = "鹿肉"
 }
 
 struct Can: Identifiable {
     var id = UUID()
     var brand: String
+    var country: String
     var meat: Meat
     var weight: Int
     var grossProtain: Double

@@ -17,7 +17,12 @@
 		D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F49292D041B003B8BC3 /* Home.swift */; };
 		D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F4C292D0931003B8BC3 /* Can.swift */; };
 		D4D8510529446CB300418D2E /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510429446CB300418D2E /* ViewExt.swift */; };
-		D4D8510829446DF700418D2E /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510729446DF700418D2E /* ImageHelper.swift */; };
+		D4D8510A29446F1800418D2E /* ImageModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510929446F1800418D2E /* ImageModifiers.swift */; };
+		D4D8510C2944823D00418D2E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510B2944823D00418D2E /* DataController.swift */; };
+		D4D8510F2944A28800418D2E /* CatFood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4D8510D2944A28800418D2E /* CatFood.xcdatamodeld */; };
+		D4D851132944A9D600418D2E /* AddCan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851122944A9D600418D2E /* AddCan.swift */; };
+		D4D851152944AA1700418D2E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851142944AA1700418D2E /* ImagePicker.swift */; };
+		D4D851172944AF2000418D2E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851162944AF2000418D2E /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +37,12 @@
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
 		D4D8510429446CB300418D2E /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
-		D4D8510729446DF700418D2E /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		D4D8510929446F1800418D2E /* ImageModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifiers.swift; sourceTree = "<group>"; };
+		D4D8510B2944823D00418D2E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		D4D8510E2944A28800418D2E /* CatFood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatFood.xcdatamodel; sourceTree = "<group>"; };
+		D4D851122944A9D600418D2E /* AddCan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCan.swift; sourceTree = "<group>"; };
+		D4D851142944AA1700418D2E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D4D851162944AF2000418D2E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,7 @@
 		D43AAB9D291F555400C7F3EC /* ProtainCalc */ = {
 			isa = PBXGroup;
 			children = (
+				D4D8510B2944823D00418D2E /* DataController.swift */,
 				D43AAB9E291F555400C7F3EC /* ProtainCalcApp.swift */,
 				D4D8510629446DE700418D2E /* Tools */,
 				D49D5F4B292D0921003B8BC3 /* Model */,
@@ -74,6 +85,7 @@
 				D43AABA0291F555400C7F3EC /* ContentView.swift */,
 				D43AABA2291F555500C7F3EC /* Assets.xcassets */,
 				D43AABA4291F555500C7F3EC /* Preview Content */,
+				D4D8510D2944A28800418D2E /* CatFood.xcdatamodeld */,
 			);
 			path = ProtainCalc;
 			sourceTree = "<group>";
@@ -90,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				D43AABAC291F56D200C7F3EC /* customModifier.swift */,
+				D4D8510929446F1800418D2E /* ImageModifiers.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -108,6 +121,7 @@
 			children = (
 				D49D5F47292CFFC9003B8BC3 /* Protain.swift */,
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
+				D4D851122944A9D600418D2E /* AddCan.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -123,7 +137,8 @@
 		D4D8510629446DE700418D2E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D4D8510729446DF700418D2E /* ImageHelper.swift */,
+				D4D851142944AA1700418D2E /* ImagePicker.swift */,
+				D4D851162944AF2000418D2E /* Helper.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -198,12 +213,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D851152944AA1700418D2E /* ImagePicker.swift in Sources */,
+				D4D851172944AF2000418D2E /* Helper.swift in Sources */,
+				D4D851132944A9D600418D2E /* AddCan.swift in Sources */,
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
 				D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */,
-				D4D8510829446DF700418D2E /* ImageHelper.swift in Sources */,
 				D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */,
+				D4D8510A29446F1800418D2E /* ImageModifiers.swift in Sources */,
+				D4D8510C2944823D00418D2E /* DataController.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
 				D4D8510529446CB300418D2E /* ViewExt.swift in Sources */,
+				D4D8510F2944A28800418D2E /* CatFood.xcdatamodeld in Sources */,
 				D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */,
 				D43AABAD291F56D200C7F3EC /* customModifier.swift in Sources */,
 				D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */,
@@ -411,6 +431,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D4D8510D2944A28800418D2E /* CatFood.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4D8510E2944A28800418D2E /* CatFood.xcdatamodel */,
+			);
+			currentVersion = D4D8510E2944A28800418D2E /* CatFood.xcdatamodel */;
+			path = CatFood.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D43AAB93291F555400C7F3EC /* Project object */;
 }
