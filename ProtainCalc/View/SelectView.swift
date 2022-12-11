@@ -17,6 +17,7 @@ struct SelectView: View {
                 SelectionCell(selection: item, selected: $selectedItem)
                     .onTapGesture {
                         selectedItem = item
+                        Helper.viberate(feedbackStyle: .heavy)
                         dismiss()
                     }
                     .listRowSeparator(.hidden)

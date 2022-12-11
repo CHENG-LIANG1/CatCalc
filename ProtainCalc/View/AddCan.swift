@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import CoreHaptics
+
 
 
 struct AddCan: View {
     @State private var showImagePicker = false
     @State private var showCountry = false
-    @State private var engine: CHHapticEngine?
+
     @State private var image = UIImage()
     @State private var selectedCountry = "国家"
     
@@ -29,6 +29,8 @@ struct AddCan: View {
     
     private let numberFormatter: NumberFormatter
     
+    @State private var date = Date.now
+    
     init() {
       numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
@@ -39,14 +41,14 @@ struct AddCan: View {
     var body: some View {
         ZStack{
             
-            VStack() {
-                HStack(spacing: 8){
+            VStack(spacing: 16) {
+                HStack(spacing: 16){
                     ZStack{
                         Image(uiImage: image)
                             .resizable()
-                            .cornerRadius(20)
+                            .cornerRadius(10)
                             .frame(width: 100, height: 100)
-                            .padding([.trailing])
+    
                             
                         
                         if  CGSizeEqualToSize(image.size, CGSizeZero) {
@@ -54,7 +56,7 @@ struct AddCan: View {
                             ZStack {
                                 Color.black.opacity(0.1)
                                     .frame(width: 100, height: 100)
-                                    .cornerRadius(20, corners: .allCorners)
+                                    .cornerRadius(100, corners: .allCorners)
                                 Image(systemName: "photo.on.rectangle")
                                     .modifier(systemImageModifier(font: .system(size: 18), forgroundColor: .pink, backgroundColor: .clear, renderingMode: .hierarchical))
                             }
@@ -69,7 +71,7 @@ struct AddCan: View {
                             .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .black, textSize: 16))
                             .multilineTextAlignment(.center)
                           
-                        HStack(spacing: 10) {
+                        HStack(spacing: 16) {
                             
                             ZStack{
                                 TextField("价格", value: $price, formatter: numberFormatter)
@@ -93,7 +95,7 @@ struct AddCan: View {
                             Text(selectedCountry)
                                 .font(.system(size: 16, weight: .medium))
                                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
-                                .background(LinearGradient(gradient: Gradient(colors: [.pink.opacity(0.2), .orange.opacity(0.2)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .background(Helper.gradientBackground)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .onTapGesture {
                                     showCountry = true
@@ -101,43 +103,53 @@ struct AddCan: View {
                         }
      
                     }
-                    
-
-                    
-
-    
-
-                    
-
-       
-    
+                
 
                 }
                 .padding([.top, .trailing, .leading], 30)
 
+
+//                HStack {
+//                    Picker("\(meat)", selection: $meat) {
+//                        ForEach(meatTypes, id:\.self) { m in
+//                                Text("\(m)")
+//
+//                            }
+//                        }
+//                    .tint(.primary)
+//
+//
+//
+//                    Picker("\(country)", selection: $country) {
+//                        ForEach(contries, id:\.self) { c in
+//                                Text("\(c)")
+//
+//                            }
+//                        }
+//                    .tint(.primary)
+//
+//
+//                }
+                
                 HStack {
-                    Picker("\(meat)", selection: $meat) {
-                        ForEach(meatTypes, id:\.self) { m in
-                                Text("\(m)")
-
-                            }
-                        }
-                    .tint(.primary)
-            
-            
-
-                    
-                    
-                    Picker("\(country)", selection: $country) {
-                        ForEach(contries, id:\.self) { c in
-                                Text("\(c)")
-
-                            }
-                        }
-                    .tint(.primary)
-         
-
+                    Text("选择成分")
+                        .font(.system(size: 16, weight: .medium))
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                        .frame(minWidth: 100)
+                        .background(Helper.gradientBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    Spacer(minLength: 16)
+                    Text("选择过期日期")
+                        .font(.system(size: 16, weight: .medium))
+                        .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
+                        .frame(maxWidth: .infinity)
+                        .background(Helper.gradientBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+       
                 }
+                .padding([.leading, .trailing], 32)
+
+    
                 Spacer()
             }
             
@@ -148,7 +160,7 @@ struct AddCan: View {
                 HStack{
                     Spacer()
                     Button{
-                        complexSuccess()
+                        Helper.viberate(feedbackStyle: .heavy)
                         dismiss()
                     }label: {
                         Text("添加")
@@ -178,37 +190,7 @@ struct AddCan: View {
         }
     }
     
-    func prepareHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error creating the engine: \(error.localizedDescription)")
-        }
-    }
-    
-    func complexSuccess() {
-        // make sure that the device supports haptics
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        var events = [CHHapticEvent]()
-
-        // create one intense, sharp tap
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
-        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
-        events.append(event)
-
-        // convert those events into a pattern and play it immediately
-        do {
-            let pattern = try CHHapticPattern(events: events, parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play pattern: \(error.localizedDescription).")
-        }
-    }
 
 }
 

@@ -178,6 +178,7 @@ struct Home: View {
                         Spacer()
                         Button{
                             showingAdditionSheet.toggle()
+                            Helper.viberate(feedbackStyle: .heavy)
                         }label: {
                             
                             ZStack {

@@ -6,7 +6,15 @@
 //
 
 import SwiftUI
+import CoreHaptics
 
-class Helper {
+struct Helper {
     
+    static var gradientBackground: LinearGradient = LinearGradient(gradient: Gradient(colors: [.pink.opacity(0.2), .orange.opacity(0.2)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    
+    static func viberate(feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle) {
+        UIImpactFeedbackGenerator(style: feedbackStyle).impactOccurred()
+    }
+
 }
