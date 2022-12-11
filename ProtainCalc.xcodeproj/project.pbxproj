@@ -23,6 +23,7 @@
 		D4D851132944A9D600418D2E /* AddCan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851122944A9D600418D2E /* AddCan.swift */; };
 		D4D851152944AA1700418D2E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851142944AA1700418D2E /* ImagePicker.swift */; };
 		D4D851172944AF2000418D2E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851162944AF2000418D2E /* Helper.swift */; };
+		D4D851192945C5BD00418D2E /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851182945C5BD00418D2E /* SelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D4D851122944A9D600418D2E /* AddCan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCan.swift; sourceTree = "<group>"; };
 		D4D851142944AA1700418D2E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D4D851162944AF2000418D2E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		D4D851182945C5BD00418D2E /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				D49D5F47292CFFC9003B8BC3 /* Protain.swift */,
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
 				D4D851122944A9D600418D2E /* AddCan.swift */,
+				D4D851182945C5BD00418D2E /* SelectView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				D4D851132944A9D600418D2E /* AddCan.swift in Sources */,
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
 				D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */,
+				D4D851192945C5BD00418D2E /* SelectView.swift in Sources */,
 				D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */,
 				D4D8510A29446F1800418D2E /* ImageModifiers.swift in Sources */,
 				D4D8510C2944823D00418D2E /* DataController.swift in Sources */,

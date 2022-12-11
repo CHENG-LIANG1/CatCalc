@@ -47,4 +47,12 @@ extension Color {
     static var ButtonColor: Color {
         return Color(hex: 0x1DB854)
     }
+    
+    static var Gradient1: Color  {
+        return Color("gradient")
+    }
+    
+    static var Gradient2: Color  {
+        return Color("gradient")
+    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct Home: View {
     var screenWidth = UIScreen().bounds.size.width
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.brand),SortDescriptor(\.model)]) var books: FetchedResults<CannedFood>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.brand),SortDescriptor(\.meat)]) var books: FetchedResults<CannedFood>
     
     @State private var showingAdditionSheet = false
     
