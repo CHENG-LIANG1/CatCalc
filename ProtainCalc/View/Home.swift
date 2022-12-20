@@ -10,16 +10,32 @@ import SwiftUI
 struct Home: View {
     var screenWidth = UIScreen().bounds.size.width
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.brand),SortDescriptor(\.meat)]) var books: FetchedResults<CannedFood>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.brand)]) var cans: FetchedResults<CannedFood>
     
     @State private var showingAdditionSheet = false
+    @Environment(\.presentationMode) var presentationMode
     
+    
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.shadowColor = .clear
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().isTranslucent = false
+    
+    }
     var body: some View {
-        
+
+
         NavigationView{
             ZStack {
-                
-                
+
+                List {
+                    ForEach(cans) { can in
+                        Text(can.brand ?? "nil")
+                        
+                    }
+                }
                 List{
                     //                    ForEach(0...30, id: \.self) {e in
                     //
@@ -46,8 +62,8 @@ struct Home: View {
                     //
                     //
                     //                            }
-                    
-                    
+
+
                     NavigationLink {
 
                     }label: {
@@ -57,10 +73,10 @@ struct Home: View {
                             Text("所有罐头")
                         }
                         .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-                        
+
                     }
                     .modifier(listViewCellModifier())
-                    
+
                     NavigationLink {
 
                     }label: {
@@ -72,10 +88,11 @@ struct Home: View {
                         .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                     }
                     .modifier(listViewCellModifier())
+
                     
-                
-        
-                    
+
+
+
                     Section("按肉分类"){
                         NavigationLink {
 
@@ -84,8 +101,8 @@ struct Home: View {
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                        
+
+
                         NavigationLink {
 
                         }label: {
@@ -93,7 +110,7 @@ struct Home: View {
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
+
                         NavigationLink {
 
                         }label: {
@@ -101,7 +118,7 @@ struct Home: View {
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
+
                         NavigationLink {
 
                         }label: {
@@ -109,7 +126,7 @@ struct Home: View {
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
+
                         NavigationLink {
 
                         }label: {
@@ -117,61 +134,62 @@ struct Home: View {
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                    }
-                    
-                    Section("按国家分类"){
-                        NavigationLink {
 
+                    }
+
+                    Section("按国家分类"){
+
+                        NavigationLink {
+                            BrandListView()
                         }label: {
                             Text("美国罐头")
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                        
-                        NavigationLink {
 
+
+                        NavigationLink {
+                            BrandListView()
                         }label: {
                             Text("新西兰罐头")
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                        NavigationLink {
 
+                        NavigationLink {
+                            BrandListView()
                         }label: {
                             Text("澳洲罐头")
                             .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                        NavigationLink {
 
+                        NavigationLink {
+                            BrandListView()
                         }label: {
                             Text("德国罐头")
-                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+                            .padding(EdgeInsets(top: 17, leading: 4, bottom: 17, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
-                        NavigationLink {
 
+                        NavigationLink {
+                            BrandListView()
                         }label: {
                             Text("英国罐头")
-                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+                            .padding(EdgeInsets(top: 17, leading: 4, bottom: 17, trailing: 4))
                         }
                         .modifier(listViewCellModifier())
-                        
+
                     }
 
 
-                    .navigationTitle("My Cans")
-        
-                    
+
+
+
                 }
 
 
-                
+
                 HStack {
                     Spacer()
                     VStack{
@@ -180,16 +198,16 @@ struct Home: View {
                             showingAdditionSheet.toggle()
                             Helper.viberate(feedbackStyle: .heavy)
                         }label: {
-                            
+
                             ZStack {
                                 Color.cyan
                                 Image(systemName: "plus")
-                                    .font(.system(size: 24, weight: .bold))
+                                    .font(.system(size: 24, weight: .black))
                                     .tint(Color.white)
                             }
-                            .frame(width: 44, height: 44)
+                            .frame(width: 60, height: 60)
                             .clipShape(Circle())
-                            
+
                         }
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 24))
                         .sheet(isPresented: $showingAdditionSheet) {
@@ -200,16 +218,24 @@ struct Home: View {
                             } else {
                                 // Fallback on earlier versions
                             }
-                            
+
                         }
                     }
                 }
                 
 
+
+                .navigationTitle("My Cans")
+                .navigationBarHidden(true)
+                .onAppear{
+
+                }
             }
         }
 
     }
+    
+
 }
 
 struct Home_Previews: PreviewProvider {

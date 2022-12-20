@@ -12,9 +12,13 @@ import SwiftUI
 struct AddCan: View {
     @State private var showImagePicker = false
     @State private var showCountry = false
+    @State private var showMeat = false
+    @State private var showDatePicker = false
 
     @State private var image = UIImage()
     @State private var selectedCountry = "国家"
+    @State private var selectedMeat = "选择肉"
+    @State private var selectedDate = Date.now
     
     @Environment(\.dismiss) var dismiss
     
@@ -28,14 +32,26 @@ struct AddCan: View {
     var contries = ["中国", "德国", "美国", "澳洲", "新西兰", "日本", "韩国", "其他"]
     
     private let numberFormatter: NumberFormatter
+    private let dateFormatter: DateFormatter
     
     @State private var date = Date.now
     
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: []) var cans: FetchedResults<CannedFood>
+    
+    
     init() {
-      numberFormatter = NumberFormatter()
+        numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
         numberFormatter.numberStyle = .decimal
         numberFormatter.zeroSymbol = ""
+        
+        dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "过期日: yyyy年 MM月 dd日"
+        
+        
 
     }
     var body: some View {
@@ -91,13 +107,18 @@ struct AddCan: View {
                         
                             }
 
-                            
-                            Text(selectedCountry)
+                            HStack {
+                                Text(selectedCountry)
+                                Image(systemName: "chevron.compact.right")
+                                    .font(.system(size: 14, weight: .bold))
+                            }
+                  
                                 .font(.system(size: 16, weight: .medium))
                                 .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
-                                .background(Helper.gradientBackground)
+                                .background(Helper.gradientBackground2)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .onTapGesture {
+                                    Helper.viberate(feedbackStyle: .heavy)
                                     showCountry = true
                                 }
                         }
@@ -107,44 +128,43 @@ struct AddCan: View {
 
                 }
                 .padding([.top, .trailing, .leading], 30)
-
-
-//                HStack {
-//                    Picker("\(meat)", selection: $meat) {
-//                        ForEach(meatTypes, id:\.self) { m in
-//                                Text("\(m)")
-//
-//                            }
-//                        }
-//                    .tint(.primary)
-//
-//
-//
-//                    Picker("\(country)", selection: $country) {
-//                        ForEach(contries, id:\.self) { c in
-//                                Text("\(c)")
-//
-//                            }
-//                        }
-//                    .tint(.primary)
-//
-//
-//                }
                 
                 HStack {
-                    Text("选择成分")
-                        .font(.system(size: 16, weight: .medium))
+                    
+                    HStack {
+                        Text(selectedMeat)
+                        Image(systemName: "chevron.compact.right")
+                            .font(.system(size: 14, weight: .bold))
+                    }
+      
+                        .font(.system(size: 14, weight: .medium))
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                         .frame(minWidth: 100)
-                        .background(Helper.gradientBackground)
+                        .background(Helper.gradientBackground2)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .onTapGesture {
+                            Helper.viberate(feedbackStyle: .heavy)
+                            showMeat = true
+                        }
                     Spacer(minLength: 16)
-                    Text("选择过期日期")
-                        .font(.system(size: 16, weight: .medium))
-                        .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
+                    
+                    HStack {
+                        Text(dateFormatter.string(from: selectedDate))
+                        Image(systemName: "chevron.compact.right")
+                            .font(.system(size: 14, weight: .bold))
+                        
+                    }
+                    
+                        .font(.system(size: 14, weight: .medium))
+                        .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
                         .frame(maxWidth: .infinity)
-                        .background(Helper.gradientBackground)
+                        .background(Helper.gradientBackground2)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .onTapGesture {
+                            Helper.viberate(feedbackStyle: .heavy)
+                            showDatePicker = true
+                        }
+                        
        
                 }
                 .padding([.leading, .trailing], 32)
@@ -161,6 +181,11 @@ struct AddCan: View {
                     Spacer()
                     Button{
                         Helper.viberate(feedbackStyle: .heavy)
+                        let meat1 = Meat(context: moc)
+                        meat1.type = "Chicken"
+                        meat1.origin = CannedFood(context: moc)
+                        meat1.origin?.brand = "dick"
+                        try? moc.save()
                         dismiss()
                     }label: {
                         Text("添加")
@@ -183,6 +208,22 @@ struct AddCan: View {
         .sheet(isPresented: $showCountry) {
             if #available(iOS 16.0, *) {
                 SelectView(selectionList: contries, selectedItem: $selectedCountry)
+                    .presentationDetents([.medium])
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        .sheet(isPresented: $showMeat) {
+            if #available(iOS 16.0, *) {
+                SelectView(selectionList: meatTypes, selectedItem: $selectedMeat)
+                    .presentationDetents([.medium])
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+        .sheet(isPresented: $showDatePicker) {
+            if #available(iOS 16.0, *) {
+                SelectDate(date: $selectedDate)
                     .presentationDetents([.medium])
             } else {
                 // Fallback on earlier versions

@@ -3,9 +3,13 @@
     <entity name="CannedFood" representedClassName="CannedFood" syncable="YES" codeGenerationType="class">
         <attribute name="brand" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="meat" optional="YES" attributeType="String"/>
         <attribute name="pic" optional="YES" attributeType="Binary"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="meatType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meat" inverseName="origin" inverseEntity="Meat"/>
+    </entity>
+    <entity name="Meat" representedClassName="Meat" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CannedFood" inverseName="meatType" inverseEntity="CannedFood"/>
     </entity>
 </model>

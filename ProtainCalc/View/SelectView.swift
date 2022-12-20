@@ -21,6 +21,11 @@ struct SelectView: View {
                         dismiss()
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: 50)
+                            .background(.clear)
+                            .foregroundColor(Color.clear)
+                    )
                 
             }
         }
@@ -40,7 +45,9 @@ struct SelectionCell: View {
     var body: some View {
         HStack {
             Text(selection)
-            Spacer()
+                .frame(maxWidth: .infinity)
+                .font(.system(size: 15, weight: .semibold, design: .rounded))
+
             
             if selection == selected {
                 Image(systemName: "checkmark.circle.fill")
@@ -50,5 +57,8 @@ struct SelectionCell: View {
                     .modifier(systemImageModifier(font: .system(size: 20), forgroundColor: .gray.opacity(0.2), backgroundColor: .clear, renderingMode: .multicolor))
             }
         }
+        .padding()
+        .background(Helper.gradientBackground2)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }

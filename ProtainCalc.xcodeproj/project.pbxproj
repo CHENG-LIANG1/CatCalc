@@ -24,6 +24,9 @@
 		D4D851152944AA1700418D2E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851142944AA1700418D2E /* ImagePicker.swift */; };
 		D4D851172944AF2000418D2E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851162944AF2000418D2E /* Helper.swift */; };
 		D4D851192945C5BD00418D2E /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D851182945C5BD00418D2E /* SelectView.swift */; };
+		D4D8511B2945DA8700418D2E /* SelectDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8511A2945DA8700418D2E /* SelectDate.swift */; };
+		D4D8511D2946301000418D2E /* BrandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8511C2946301000418D2E /* BrandListView.swift */; };
+		D4D8511F2947764100418D2E /* CanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8511E2947764100418D2E /* CanDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		D4D851142944AA1700418D2E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D4D851162944AF2000418D2E /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		D4D851182945C5BD00418D2E /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		D4D8511A2945DA8700418D2E /* SelectDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDate.swift; sourceTree = "<group>"; };
+		D4D8511C2946301000418D2E /* BrandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListView.swift; sourceTree = "<group>"; };
+		D4D8511E2947764100418D2E /* CanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,9 @@
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
 				D4D851122944A9D600418D2E /* AddCan.swift */,
 				D4D851182945C5BD00418D2E /* SelectView.swift */,
+				D4D8511A2945DA8700418D2E /* SelectDate.swift */,
+				D4D8511C2946301000418D2E /* BrandListView.swift */,
+				D4D8511E2947764100418D2E /* CanDetail.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,11 +229,14 @@
 				D4D851172944AF2000418D2E /* Helper.swift in Sources */,
 				D4D851132944A9D600418D2E /* AddCan.swift in Sources */,
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
+				D4D8511D2946301000418D2E /* BrandListView.swift in Sources */,
 				D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */,
 				D4D851192945C5BD00418D2E /* SelectView.swift in Sources */,
 				D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */,
 				D4D8510A29446F1800418D2E /* ImageModifiers.swift in Sources */,
 				D4D8510C2944823D00418D2E /* DataController.swift in Sources */,
+				D4D8511B2945DA8700418D2E /* SelectDate.swift in Sources */,
+				D4D8511F2947764100418D2E /* CanDetail.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
 				D4D8510529446CB300418D2E /* ViewExt.swift in Sources */,
 				D4D8510F2944A28800418D2E /* CatFood.xcdatamodeld in Sources */,
@@ -363,6 +375,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "猫猫计算器";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We want to use your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -394,6 +408,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "猫猫计算器";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We want to use your camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to access your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
