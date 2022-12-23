@@ -57,15 +57,12 @@ struct AddCan: View {
     
     
     func addCan(){
-//        let meat1 = Meat(context: moc)
-//        meat1.type = "Chicken"
-//        meat1.origin = CannedFood(context: moc)
-//        meat1.origin?.brand = "dick"
-        
         let canned = CannedFood(context: moc)
         canned.brand = brand
         canned.price = Float(price)
         canned.country = country
+        
+        canned.pic = image.pngData()
         
         for meatName in selectedMeat {
             let meat = Meat(context: moc)
@@ -74,7 +71,6 @@ struct AddCan: View {
         }
         
         try? moc.save()
-                                
                                 
     }
     
@@ -220,17 +216,7 @@ struct AddCan: View {
                     Spacer()
                     Button{
                         Helper.viberate(feedbackStyle: .heavy)
-//                        let meat1 = Meat(context: moc)
-//                        meat1.type = "Chicken"
-//                        meat1.origin = CannedFood(context: moc)
-//                        meat1.origin?.brand = "dick"
-//                        try? moc.save()
-                        
-                        
-                        
                         addCan()
-                        
-                        
                         dismiss()
                     }label: {
                         Text("添加")

@@ -37,6 +37,8 @@ struct Home: View {
                                 Text(meat.type!)
                                 
                             }
+                            
+                            Image(uiImage: UIImage(data: can.pic ?? Data()) ?? UIImage())
                         }
                         
                     }
