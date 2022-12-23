@@ -10,25 +10,62 @@ import SwiftUI
 struct SelectView: View {
     var selectionList: [String]
     @Environment(\.dismiss) var dismiss
-    @Binding var selectedItem: String
+    @Binding var selectedItems: [String]
     var body: some View {
-        List {
-            ForEach(selectionList, id:\.self) { item in
-                SelectionCell(selection: item, selected: $selectedItem)
-                    .onTapGesture {
-                        selectedItem = item
-                        Helper.viberate(feedbackStyle: .heavy)
-                        dismiss()
-                    }
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 50)
-                            .background(.clear)
-                            .foregroundColor(Color.clear)
-                    )
-                
+        
+        ZStack {
+
+            
+            List {
+                ForEach(selectionList, id:\.self) { item in
+                    SelectionCell(selection: item, selected: $selectedItems)
+                        .onTapGesture {
+                            if selectedItems.contains(item) {
+                                selectedItems.remove(at: selectedItems.firstIndex(of: item)!)
+                            } else {
+                                selectedItems.append(item)
+                            }
+                            
+                        
+                            Helper.viberate(feedbackStyle: .heavy)
+    //                        dismiss()
+                        }
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 50)
+                                .background(.clear)
+                                .foregroundColor(Color.clear)
+                        )
+                    
+                }
             }
+
+            
+//            VStack {
+//                HStack {
+//                    
+//                    Spacer()
+//                    
+//                    Button{
+//                        Helper.viberate(feedbackStyle: .heavy)
+//
+//                        dismiss()
+//                    }label: {
+//                        Text("添加")
+//                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+//                        .background(.cyan)
+//                    }
+//                    .foregroundColor(.white)
+//                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+//                    .cornerRadius(5, corners: .allCorners)
+//
+//                }
+//                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 8 ))
+//                Spacer()
+//            }
         }
+        
+
     }
 }
 
@@ -40,7 +77,7 @@ struct SelectView: View {
 
 struct SelectionCell: View {
     let selection: String
-    @Binding var selected: String
+    @Binding var selected: [String]
     
     var body: some View {
         HStack {
@@ -49,12 +86,12 @@ struct SelectionCell: View {
                 .font(.system(size: 15, weight: .semibold, design: .rounded))
 
             
-            if selection == selected {
+            if selected.contains(selection) {
                 Image(systemName: "checkmark.circle.fill")
                     .modifier(systemImageModifier(font: .system(size: 20, weight:.black), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .hierarchical))
             }else {
                 Image(systemName: "circle.fill")
-                    .modifier(systemImageModifier(font: .system(size: 20), forgroundColor: .gray.opacity(0.2), backgroundColor: .clear, renderingMode: .multicolor))
+                    .modifier(systemImageModifier(font: .system(size: 20, weight:.black), forgroundColor: .gray.opacity(0.2), backgroundColor: .clear, renderingMode: .multicolor))
             }
         }
         .padding()

@@ -13,6 +13,10 @@
 		D43AABA6291F555500C7F3EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D43AABA5291F555500C7F3EC /* Preview Assets.xcassets */; };
 		D43AABAD291F56D200C7F3EC /* customModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AABAC291F56D200C7F3EC /* customModifier.swift */; };
 		D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43AABAE291F572700C7F3EC /* ColorExt.swift */; };
+		D499DE4629556BCD0019FDE0 /* CannedFood+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4229556BCD0019FDE0 /* CannedFood+CoreDataClass.swift */; };
+		D499DE4729556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */; };
+		D499DE4829556BCD0019FDE0 /* Meat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */; };
+		D499DE4929556BCD0019FDE0 /* Meat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4529556BCD0019FDE0 /* Meat+CoreDataProperties.swift */; };
 		D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F47292CFFC9003B8BC3 /* Protain.swift */; };
 		D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F49292D041B003B8BC3 /* Home.swift */; };
 		D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F4C292D0931003B8BC3 /* Can.swift */; };
@@ -37,6 +41,10 @@
 		D43AABA5291F555500C7F3EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D43AABAC291F56D200C7F3EC /* customModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customModifier.swift; sourceTree = "<group>"; };
 		D43AABAE291F572700C7F3EC /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		D499DE4229556BCD0019FDE0 /* CannedFood+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CannedFood+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CannedFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D499DE4529556BCD0019FDE0 /* Meat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D49D5F47292CFFC9003B8BC3 /* Protain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protain.swift; sourceTree = "<group>"; };
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
@@ -83,6 +91,10 @@
 		D43AAB9D291F555400C7F3EC /* ProtainCalc */ = {
 			isa = PBXGroup;
 			children = (
+				D499DE4229556BCD0019FDE0 /* CannedFood+CoreDataClass.swift */,
+				D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */,
+				D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */,
+				D499DE4529556BCD0019FDE0 /* Meat+CoreDataProperties.swift */,
 				D4D8510B2944823D00418D2E /* DataController.swift */,
 				D43AAB9E291F555400C7F3EC /* ProtainCalcApp.swift */,
 				D4D8510629446DE700418D2E /* Tools */,
@@ -226,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4D851152944AA1700418D2E /* ImagePicker.swift in Sources */,
+				D499DE4629556BCD0019FDE0 /* CannedFood+CoreDataClass.swift in Sources */,
 				D4D851172944AF2000418D2E /* Helper.swift in Sources */,
 				D4D851132944A9D600418D2E /* AddCan.swift in Sources */,
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
@@ -234,10 +247,13 @@
 				D4D851192945C5BD00418D2E /* SelectView.swift in Sources */,
 				D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */,
 				D4D8510A29446F1800418D2E /* ImageModifiers.swift in Sources */,
+				D499DE4929556BCD0019FDE0 /* Meat+CoreDataProperties.swift in Sources */,
 				D4D8510C2944823D00418D2E /* DataController.swift in Sources */,
 				D4D8511B2945DA8700418D2E /* SelectDate.swift in Sources */,
 				D4D8511F2947764100418D2E /* CanDetail.swift in Sources */,
+				D499DE4829556BCD0019FDE0 /* Meat+CoreDataClass.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
+				D499DE4729556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift in Sources */,
 				D4D8510529446CB300418D2E /* ViewExt.swift in Sources */,
 				D4D8510F2944A28800418D2E /* CatFood.xcdatamodeld in Sources */,
 				D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */,

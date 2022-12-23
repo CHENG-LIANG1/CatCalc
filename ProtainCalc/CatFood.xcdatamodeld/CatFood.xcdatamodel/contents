@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CannedFood" representedClassName="CannedFood" syncable="YES" codeGenerationType="class">
+    <entity name="CannedFood" representedClassName="CannedFood" syncable="YES">
         <attribute name="brand" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="pic" optional="YES" attributeType="Binary"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="meatType" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meat" inverseName="origin" inverseEntity="Meat"/>
     </entity>
-    <entity name="Meat" representedClassName="Meat" syncable="YES" codeGenerationType="class">
+    <entity name="Meat" representedClassName="Meat" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="origin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CannedFood" inverseName="meatType" inverseEntity="CannedFood"/>
     </entity>

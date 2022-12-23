@@ -16,8 +16,8 @@ struct AddCan: View {
     @State private var showDatePicker = false
 
     @State private var image = UIImage()
-    @State private var selectedCountry = "国家"
-    @State private var selectedMeat = "选择肉"
+    @State private var selectedCountry = ["国家"]
+    @State private var selectedMeat = [String]()
     @State private var selectedDate = Date.now
     
     @Environment(\.dismiss) var dismiss
@@ -27,7 +27,7 @@ struct AddCan: View {
     @State private var meat = ""
     @State private var country = ""
     
-    var meatTypes = ["鸡肉", "鸭肉", "牛肉", "鹿肉", "兔肉", "其他"]
+    var meatTypes = ["鸡肉", "鸭肉", "牛肉", "鹿肉", "兔肉", "三文鱼", "其他"]
     
     var contries = ["中国", "德国", "美国", "澳洲", "新西兰", "日本", "韩国", "其他"]
     
@@ -54,6 +54,30 @@ struct AddCan: View {
         
 
     }
+    
+    
+    func addCan(){
+//        let meat1 = Meat(context: moc)
+//        meat1.type = "Chicken"
+//        meat1.origin = CannedFood(context: moc)
+//        meat1.origin?.brand = "dick"
+        
+        let canned = CannedFood(context: moc)
+        canned.brand = brand
+        canned.price = Float(price)
+        canned.country = country
+        
+        for meatName in selectedMeat {
+            let meat = Meat(context: moc)
+            meat.type = meatName
+            meat.origin = canned
+        }
+        
+        try? moc.save()
+                                
+                                
+    }
+    
     var body: some View {
         ZStack{
             
@@ -108,7 +132,7 @@ struct AddCan: View {
                             }
 
                             HStack {
-                                Text(selectedCountry)
+                                Text(selectedCountry[0])
                                 Image(systemName: "chevron.compact.right")
                                     .font(.system(size: 14, weight: .bold))
                             }
@@ -129,47 +153,62 @@ struct AddCan: View {
                 }
                 .padding([.top, .trailing, .leading], 30)
                 
-                HStack {
-                    
-                    HStack {
-                        Text(selectedMeat)
-                        Image(systemName: "chevron.compact.right")
-                            .font(.system(size: 14, weight: .bold))
-                    }
-      
-                        .font(.system(size: 14, weight: .medium))
-                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                        .frame(minWidth: 100)
-                        .background(Helper.gradientBackground2)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .onTapGesture {
-                            Helper.viberate(feedbackStyle: .heavy)
-                            showMeat = true
-                        }
-                    Spacer(minLength: 16)
-                    
-                    HStack {
-                        Text(dateFormatter.string(from: selectedDate))
-                        Image(systemName: "chevron.compact.right")
-                            .font(.system(size: 14, weight: .bold))
-                        
-                    }
-                    
-                        .font(.system(size: 14, weight: .medium))
-                        .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
-                        .frame(maxWidth: .infinity)
-                        .background(Helper.gradientBackground2)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .onTapGesture {
-                            Helper.viberate(feedbackStyle: .heavy)
-                            showDatePicker = true
-                        }
-                        
-       
-                }
-                .padding([.leading, .trailing], 32)
 
-    
+                
+                HStack {
+                    Text(selectedMeat.isEmpty ? "选择肉" : selectedMeat[0])
+                    Image(systemName: "chevron.compact.right")
+                        .font(.system(size: 16, weight: .bold))
+                    
+                }
+
+                    .font(.system(size: 16, weight: .medium))
+                    .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
+                    .frame(maxWidth: .infinity)
+                    .background(Helper.gradientBackground2)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onTapGesture {
+                        Helper.viberate(feedbackStyle: .heavy)
+                        showMeat = true
+                    }
+                    .padding([ .trailing, .leading], 30)
+                
+                HStack {
+                    Text(dateFormatter.string(from: selectedDate))
+                    Image(systemName: "chevron.compact.right")
+                        .font(.system(size: 14, weight: .bold))
+                    
+                }
+                
+                    .font(.system(size: 16, weight: .medium))
+                    .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
+                    .frame(maxWidth: .infinity)
+                    .background(Helper.gradientBackground2)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onTapGesture {
+                        Helper.viberate(feedbackStyle: .heavy)
+                        showDatePicker = true
+                    }
+                    .padding([ .trailing, .leading], 30)
+
+//                HStack {
+//                    Text(selectedMeat[0])
+//                    Image(systemName: "chevron.compact.right")
+//                        .font(.system(size: 14, weight: .bold))
+//                }
+//
+//                    .font(.system(size: 14, weight: .medium))
+//                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+//                    .frame(minWidth: 100)
+//                    .background(Helper.gradientBackground2)
+//                    .clipShape(RoundedRectangle(cornerRadius: 10))
+//
+//
+//                    .onTapGesture {
+//                        Helper.viberate(feedbackStyle: .heavy)
+//                        showMeat = true
+//                    }
+//
                 Spacer()
             }
             
@@ -181,11 +220,17 @@ struct AddCan: View {
                     Spacer()
                     Button{
                         Helper.viberate(feedbackStyle: .heavy)
-                        let meat1 = Meat(context: moc)
-                        meat1.type = "Chicken"
-                        meat1.origin = CannedFood(context: moc)
-                        meat1.origin?.brand = "dick"
-                        try? moc.save()
+//                        let meat1 = Meat(context: moc)
+//                        meat1.type = "Chicken"
+//                        meat1.origin = CannedFood(context: moc)
+//                        meat1.origin?.brand = "dick"
+//                        try? moc.save()
+                        
+                        
+                        
+                        addCan()
+                        
+                        
                         dismiss()
                     }label: {
                         Text("添加")
@@ -199,6 +244,8 @@ struct AddCan: View {
                 }
       
             }
+            
+
         }
 
         
@@ -207,7 +254,7 @@ struct AddCan: View {
         }
         .sheet(isPresented: $showCountry) {
             if #available(iOS 16.0, *) {
-                SelectView(selectionList: contries, selectedItem: $selectedCountry)
+                SelectView(selectionList: contries, selectedItems: $selectedCountry)
                     .presentationDetents([.medium])
             } else {
                 // Fallback on earlier versions
@@ -215,7 +262,7 @@ struct AddCan: View {
         }
         .sheet(isPresented: $showMeat) {
             if #available(iOS 16.0, *) {
-                SelectView(selectionList: meatTypes, selectedItem: $selectedMeat)
+                SelectView(selectionList: meatTypes, selectedItems: $selectedMeat)
                     .presentationDetents([.medium])
             } else {
                 // Fallback on earlier versions
