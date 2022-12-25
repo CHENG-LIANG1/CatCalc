@@ -60,6 +60,9 @@ struct BrandListView: View {
                         NavigationLink {
 //                                Brandlist
 //                            BrandListView(country: country)
+                        
+                            CanDetail(can: can)
+                            
                         }label: {
                             
                             HStack {
@@ -76,8 +79,8 @@ struct BrandListView: View {
                                 
                                 Spacer()
                                 
-                                Text(String(format:"%.2f g", can.weight))
-                                    .modifier(defaultTextModifier(textSize: 16, weight: .semibold))
+                                Text(String(format:"%.1f g", can.weight))
+                                    .modifier(capsuleTextModifier(textSize: 12, weight: .bold, color: .cyan))
                                 
                                 
                             }
@@ -145,6 +148,7 @@ struct BrandListView: View {
                        )
         .navigationBarTitle("\(country)罐头")
         .onAppear {
+            brands = []
             filteredCans = cans.filter { $0.country == country}
             
             for can in filteredCans {

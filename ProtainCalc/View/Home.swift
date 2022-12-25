@@ -222,6 +222,7 @@ struct Home: View {
                 .navigationTitle("My Cans")
                 .navigationBarHidden(true)
                 .onAppear{
+                    countries = []
                     for can in cans {
                         self.countries.append(can.country ?? "未知")
                     }

@@ -33,3 +33,21 @@ struct secondaryTextModifier: ViewModifier {
     }
 }
 
+
+
+struct capsuleTextModifier: ViewModifier {
+    var textSize: CGFloat
+    var weight: Font.Weight
+    var color: Color
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: textSize, weight: weight, design: .monospaced))
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .foregroundColor(.white)
+            .background(color)
+            .clipShape(Capsule())
+            
+    }
+}
