@@ -51,3 +51,43 @@ struct capsuleTextModifier: ViewModifier {
             
     }
 }
+
+struct largeCubeModifier: ViewModifier {
+    var textSize: CGFloat
+    var weight: Font.Weight
+    var color: Color
+    var width: CGFloat
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: textSize, weight: weight, design: .monospaced))
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .frame(width: width, height: width)
+            .foregroundColor(.white)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+    }
+}
+
+
+struct rectangleModifier: ViewModifier {
+    var textSize: CGFloat
+    var weight: Font.Weight
+    var color: Color
+    var width: CGFloat
+    var height: CGFloat
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: textSize, weight: weight, design: .monospaced))
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            .frame(width: width, height: height)
+            .foregroundColor(.white)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+    }
+}

@@ -21,8 +21,16 @@ extension CannedFood {
     @NSManaged public var date: Date?
     @NSManaged public var pic: Data?
     @NSManaged public var price: Float
+    @NSManaged public var protain: Float
     @NSManaged public var fat: Float
+    @NSManaged public var ash: Float
+    @NSManaged public var fiber: Float
+    @NSManaged public var water: Float
     @NSManaged public var weight: Float
+    @NSManaged public var calcium: Float
+    @NSManaged public var phosphate: Float
+    @NSManaged public var cl: Float
+    @NSManaged public var taurine: Float
     @NSManaged public var meatType: NSSet?
     
     public var meatArray: [Meat] {

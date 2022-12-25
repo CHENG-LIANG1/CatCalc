@@ -207,7 +207,7 @@ struct Home: View {
                         }) {
                             if #available(iOS 16.0, *) {
                                 AddCan()
-                                    .presentationDetents([.medium, .large])
+                                    .presentationDetents([ .large])
                                     .presentationDragIndicator(.visible)
                             } else {
                                 // Fallback on earlier versions
