@@ -203,6 +203,7 @@ struct Home: View {
                             }
                             
                             countries = Array(Set(countries))
+                            countries.sort()
                         }) {
                             if #available(iOS 16.0, *) {
                                 AddCan()

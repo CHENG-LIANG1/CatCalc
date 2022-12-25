@@ -25,6 +25,7 @@ struct AddCan: View {
     
     @State private var brand = ""
     @State private var price = 0.0
+    @State private var weight = 0.0
     @State private var meat = ""
     @State private var country = ""
     
@@ -63,7 +64,8 @@ struct AddCan: View {
         canned.brand = brand
         canned.price = Float(price)
         canned.country = selectedCountry
-        
+        canned.date = selectedDate
+        canned.weight = Float(weight)
         canned.pic = image.pngData()
         
         for meatName in selectedMeat {
@@ -153,24 +155,50 @@ struct AddCan: View {
                 .padding([.top, .trailing, .leading], 30)
                 
 
+                HStack(spacing: 16) {
+                    ZStack{
+                        TextField("重量", value: $weight, formatter: numberFormatter)
+                            .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .black, textSize: 16))
+                            .multilineTextAlignment(.center)
+                            .keyboardType(.decimalPad)
+                            .tint(.clear)
+                            .padding([ .leading], 30)
+                  
+                        
+                        HStack{
+                            Spacer()
+                            Text("克")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(.gray)
+                                .padding([.trailing, .top], 8)
+                            
+                        }
                 
-                HStack {
-                    Text(selectedMeat.isEmpty ? "选择肉" : "查看已选")
-                    Image(systemName: "chevron.compact.right")
-                        .font(.system(size: 16, weight: .bold))
+                    }
+                    
+                    HStack {
+                    
+                        
+                        Text(selectedMeat.isEmpty ? "选择肉" : "查看已选")
+                        Image(systemName: "chevron.compact.right")
+                            .font(.system(size: 16, weight: .bold))
+                        
+                    }
+
+                        .font(.system(size: 16, weight: .medium))
+                        .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
+                        .frame(maxWidth: .infinity)
+                        .background(Helper.gradientBackground2)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .onTapGesture {
+                            Helper.viberate(feedbackStyle: .heavy)
+                            showMeat = true
+                        }
+                        .padding([ .trailing], 30)
                     
                 }
 
-                    .font(.system(size: 16, weight: .medium))
-                    .padding(EdgeInsets(top: 10, leading: 8, bottom: 10, trailing: 8))
-                    .frame(maxWidth: .infinity)
-                    .background(Helper.gradientBackground2)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .onTapGesture {
-                        Helper.viberate(feedbackStyle: .heavy)
-                        showMeat = true
-                    }
-                    .padding([ .trailing, .leading], 30)
+
                 
                 HStack {
                     Text(dateFormatter.string(from: selectedDate))
@@ -243,7 +271,6 @@ struct AddCan: View {
             
 
         }
-        .interactiveDismissDisabled()
 
         .alert("请输入必填项", isPresented: $showAlert, actions: {
             Button("OK"){

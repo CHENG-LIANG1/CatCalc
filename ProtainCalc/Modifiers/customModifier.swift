@@ -23,6 +23,20 @@ struct listViewCellModifier: ViewModifier {
     }
 }
 
+struct brandCellModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .listRowSeparator(.hidden)
+            .listRowBackground(
+                RoundedRectangle(cornerRadius: 8)
+                    .background(.clear)
+                    .foregroundColor(Color.BackgroundColor)
+                    .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
+
+            )
+    }
+}
+
 struct gradientTextFieldModifier: ViewModifier {
     var radius: CGFloat
     var startColor: Color

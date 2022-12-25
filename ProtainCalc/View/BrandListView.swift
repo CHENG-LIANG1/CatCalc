@@ -57,14 +57,41 @@ struct BrandListView: View {
                 
                 Section(brand){
                     ForEach(filteredCans.filter {$0.brand == brand}) { can in
-                        Text(can.brand ?? "none")
+                        NavigationLink {
+//                                Brandlist
+//                            BrandListView(country: country)
+                        }label: {
+                            
+                            HStack {
+                                VStack(alignment: .leading, spacing: 8){
+                                    Text(can.brand ?? "")
+                                        .modifier(defaultTextModifier(textSize: 18, weight: .semibold))
+                                    
+                                    Text(can.meatArray.map({ e in
+                                        e.type ?? ""
+                                    }).joined(separator: ", ") )
+                                    .modifier(secondaryTextModifier(textSize: 12, weight: .medium))
+                                    
+                                }
+                                
+                                Spacer()
+                                
+                                Text(String(format:"%.2f g", can.weight))
+                                    .modifier(defaultTextModifier(textSize: 16, weight: .semibold))
+                                
+                                
+                            }
+
+                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+                        }
+                        .modifier(brandCellModifier())
                     }
                 }
                 
                 
             }
             
-            .onDelete(perform: deleteCan(at:))
+//            .onDelete(perform: deleteCan(at:))
             
 //            ForEach(brandList) { menuItem in
 //
