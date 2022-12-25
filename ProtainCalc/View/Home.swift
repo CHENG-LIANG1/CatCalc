@@ -226,6 +226,7 @@ struct Home: View {
                     }
                     
                     countries = Array(Set(countries))
+                    countries.sort()
                 }
             }
         }

@@ -17,13 +17,15 @@ struct Brand: Identifiable {
 
 struct BrandListView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.managedObjectContext) var moc
     var country: String
     
     @FetchRequest(sortDescriptors: []) var cans: FetchedResults<CannedFood>
         
     
     @State private var filteredCans = [CannedFood]()
+    @State private var brands = [String]()
+    @State private var showDeleteAlert = false
 //
 //    init(){
 //        brandList = [brand1, brand2, brand3]
@@ -32,14 +34,37 @@ struct BrandListView: View {
 //
 
     
+    func deleteCan(at offsets: IndexSet) {
+        for offset in offsets {
+            let can = filteredCans[offset]
+            moc.delete(can)
+        }
+        try? moc.save()
+        filteredCans = cans.filter { $0.country == country}
+        brands = []
+        for can in filteredCans {
+            brands.append(can.brand ?? "none")
+        }
+        brands = Array(Set(brands))
+
+    }
+    
     var body: some View {
         
         List {
             
-            ForEach(filteredCans) { can in
-                Text(can.brand!)
+            ForEach(brands, id:\.self) { brand in
+                
+                Section(brand){
+                    ForEach(filteredCans.filter {$0.brand == brand}) { can in
+                        Text(can.brand ?? "none")
+                    }
+                }
+                
                 
             }
+            
+            .onDelete(perform: deleteCan(at:))
             
 //            ForEach(brandList) { menuItem in
 //
@@ -91,9 +116,14 @@ struct BrandListView: View {
                                }
                            }
                        )
-        .navigationBarTitle("美国罐头")
+        .navigationBarTitle("\(country)罐头")
         .onAppear {
             filteredCans = cans.filter { $0.country == country}
+            
+            for can in filteredCans {
+                brands.append(can.brand ?? "none")
+            }
+            brands = Array(Set(brands))
         }
         
 

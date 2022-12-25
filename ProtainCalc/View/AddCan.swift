@@ -14,6 +14,7 @@ struct AddCan: View {
     @State private var showCountry = false
     @State private var showMeat = false
     @State private var showDatePicker = false
+    @State private var showAlert = false
 
     @State private var image = UIImage()
     @State private var selectedCountry = "国家"
@@ -30,6 +31,7 @@ struct AddCan: View {
     var meatTypes = ["鸡肉", "鸭肉", "牛肉", "鹿肉", "兔肉", "三文鱼", "其他"]
     
     var contries = ["中国", "德国", "美国", "澳洲", "新西兰", "日本", "韩国", "其他"]
+
     
     private let numberFormatter: NumberFormatter
     private let dateFormatter: DateFormatter
@@ -73,6 +75,7 @@ struct AddCan: View {
         try? moc.save()
                                 
     }
+    
     
     var body: some View {
         ZStack{
@@ -152,7 +155,7 @@ struct AddCan: View {
 
                 
                 HStack {
-                    Text(selectedMeat.isEmpty ? "选择肉" : selectedMeat[0])
+                    Text(selectedMeat.isEmpty ? "选择肉" : "查看已选")
                     Image(systemName: "chevron.compact.right")
                         .font(.system(size: 16, weight: .bold))
                     
@@ -216,8 +219,15 @@ struct AddCan: View {
                     Spacer()
                     Button{
                         Helper.viberate(feedbackStyle: .heavy)
-                        addCan()
-                        dismiss()
+                        
+                        if selectedCountry == "国家" || selectedMeat == [] || brand == "" || price == 0.0{
+                            showAlert = true
+                        }else {
+                            addCan()
+                            dismiss()
+                        }
+                        
+
                     }label: {
                         Text("添加")
                             .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
@@ -233,7 +243,13 @@ struct AddCan: View {
             
 
         }
+        .interactiveDismissDisabled()
 
+        .alert("请输入必填项", isPresented: $showAlert, actions: {
+            Button("OK"){
+                
+            }
+        })
         
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
