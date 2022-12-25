@@ -67,7 +67,7 @@ struct Home: View {
                     .modifier(listViewCellModifier())
 
                     NavigationLink {
-
+                        FavListView()
                     }label: {
                         HStack {
                             Image(systemName:"heart.fill")

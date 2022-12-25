@@ -108,6 +108,7 @@ struct AddCan: View {
         ZStack{
             
             VStack(spacing: 32) {
+
                 VStack(spacing: spacing) {
                     HStack(spacing: spacing){
                         ZStack{
@@ -135,17 +136,17 @@ struct AddCan: View {
                         }
                         VStack(spacing: spacing){
                             TextField("品牌", text: $brand)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .TextColorPrimary, textSize: 16))
                                 .multilineTextAlignment(.center)
                               
                             HStack(spacing: spacing) {
                                 
                                 ZStack{
                                     TextField("价格", value: $price, formatter: numberFormatter)
-                                        .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .black, textSize: 16))
+                                        .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .TextColorPrimary, textSize: 16))
                                         .multilineTextAlignment(.center)
                                         .keyboardType(.decimalPad)
-                                        .tint(.clear)
+                                     
                                     
                                     HStack{
                                         Spacer()
@@ -184,10 +185,10 @@ struct AddCan: View {
                     HStack(spacing: spacing) {
                         ZStack{
                             TextField("重量", value: $weight, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .TextColorPrimary, textSize: 16))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+                          
                                 .padding([ .leading], 30)
                       
                             
@@ -247,17 +248,17 @@ struct AddCan: View {
 
                 }
                 
-                VStack(spacing: 24){
+                VStack(spacing: 16){
                     HStack {
                         Text("详细信息(若没有可不填)")
                             .modifier(secondaryTextModifier(textSize: 14, weight: .semibold))
                         Spacer()
                     }
                     
-                    HStack(spacing: 24) {
+                    HStack(spacing: 16) {
                         ZStack{
                             TextField("粗蛋白质", value: $protain, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
                                 .tint(.clear)
@@ -276,11 +277,30 @@ struct AddCan: View {
                         
                         ZStack{
                             TextField("粗脂肪", value: $fat, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+                  
     
+                      
+                            
+                            HStack{
+                                Spacer()
+                                Text("%")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.gray)
+                                    .padding([.trailing, .top], 8)
+                                
+                            }
+                    
+                        }
+                        
+                        ZStack{
+                            TextField("粗灰分", value: $ash, formatter: numberFormatter)
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
+                                .multilineTextAlignment(.center)
+                                .keyboardType(.decimalPad)
+                 
                       
                             
                             HStack{
@@ -299,32 +319,14 @@ struct AddCan: View {
                     }
                     
                     
-                    HStack(spacing: 24) {
-                        ZStack{
-                            TextField("粗灰分", value: $ash, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
-                                .multilineTextAlignment(.center)
-                                .keyboardType(.decimalPad)
-                                .tint(.clear)
-                      
-                            
-                            HStack{
-                                Spacer()
-                                Text("%")
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(.gray)
-                                    .padding([.trailing, .top], 8)
-                                
-                            }
-                    
-                        }
+                    HStack(spacing: 16) {
+
                         
                         ZStack{
                             TextField("粗纤维", value: $fiber, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
     
                       
                             
@@ -339,18 +341,12 @@ struct AddCan: View {
                     
                         }
                         
-                        
-                        
-                    }
-                    
-                    
-                    HStack(spacing: 24) {
                         ZStack{
                             TextField("钙", value: $calcium, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+                     
                       
                             
                             HStack{
@@ -363,13 +359,14 @@ struct AddCan: View {
                             }
                     
                         }
+                        
                         
                         ZStack{
                             TextField("总磷", value: $phosphate, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+            
     
                       
                             
@@ -383,6 +380,7 @@ struct AddCan: View {
                             }
                     
                         }
+
                         
                         
                         
@@ -390,13 +388,13 @@ struct AddCan: View {
                     
                     
                     
-                    HStack(spacing: 24) {
+                    HStack(spacing: 16) {
                         ZStack{
                             TextField("牛磺酸", value: $taurine, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+                      
                       
                             
                             HStack{
@@ -412,10 +410,10 @@ struct AddCan: View {
                         
                         ZStack{
                             TextField("水溶性氯化物", value: $cl, formatter: numberFormatter)
-                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .black, textSize: 16))
+                                .modifier(gradientTextFieldModifier(radius: 10, startColor: .yellow.opacity(0.2), endColor: .green.opacity(0.2), textColor: .TextColorPrimary, textSize: 12))
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.decimalPad)
-                                .tint(.clear)
+              
     
                       
                             
@@ -436,10 +434,10 @@ struct AddCan: View {
                     
                     ZStack{
                         TextField("水分含量", value: $water, formatter: numberFormatter)
-                            .modifier(gradientTextFieldModifier(radius: 10, startColor: .cyan.opacity(0.2), endColor: .blue.opacity(0.2), textColor: .black, textSize: 16))
+                            .modifier(gradientTextFieldModifier(radius: 10, startColor: .cyan.opacity(0.2), endColor: .blue.opacity(0.2), textColor: .TextColorPrimary, textSize: 16))
                             .multilineTextAlignment(.center)
                             .keyboardType(.decimalPad)
-                            .tint(.clear)
+                         
                   
                         
                         HStack{

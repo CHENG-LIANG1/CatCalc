@@ -71,7 +71,7 @@ struct CanDetail: View {
                         }
                     }
    
-               
+                    Spacer()
                     
                     VStack(alignment: .leading)  {
                         
@@ -91,7 +91,7 @@ struct CanDetail: View {
                     
                     }
                     .frame(height: 100)
-                    Spacer()
+     
 
 
                 }
@@ -187,7 +187,7 @@ struct CanDetail: View {
                     
                     Spacer()
                     
-                    Text(String(format:"真灰分\n%.2f%%", calculateNetValue(value: can.ash)))
+                    Text(String(format:"干物质剂\n%.2f%%", calculateNetValue(value: can.ash)))
                         .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 2))
                         .multilineTextAlignment(.center)
                         .tint(.clear)
@@ -203,14 +203,19 @@ struct CanDetail: View {
           
                 HStack {
                     Text(String(format:"钙\n%.2f%%", can.calcium))
-                        .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 2))
+                        .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 3))
                         .multilineTextAlignment(.center)
                         .tint(.clear)
                     
                     Spacer()
                     
                     Text(String(format:"总磷\n%.2f%%", can.phosphate))
-                        .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 2))
+                        .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 3))
+                        .multilineTextAlignment(.center)
+                        .tint(.clear)
+                    
+                    Text(String(format:"钙磷比\n%.2f%%", can.calcium / can.phosphate))
+                        .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 100) / 3))
                         .multilineTextAlignment(.center)
                         .tint(.clear)
                 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct CanListView: View {
+struct FavListView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var moc
     
@@ -40,7 +40,7 @@ struct CanListView: View {
                                        }
                                    }
                                )
-                .navigationBarTitle("全部罐头")
+                .navigationBarTitle("我的收藏")
         } else {
             List {
 

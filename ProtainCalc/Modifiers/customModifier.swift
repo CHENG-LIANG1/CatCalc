@@ -51,7 +51,8 @@ struct gradientTextFieldModifier: ViewModifier {
             .cornerRadius(radius)
             .foregroundColor(textColor)
             .font(.system(size: textSize, weight: .semibold, design: .rounded))
-            .accentColor(textColor)
+            .tint(.TextColorPrimary)
+//            .accentColor(textColor)
     }
 }
 
