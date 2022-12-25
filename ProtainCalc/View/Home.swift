@@ -43,43 +43,17 @@ struct Home: View {
 
                             }
 
-//                            Image(uiImage: UIImage(data: can.pic ?? Data()) ?? UIImage())
                         }
-
                     }
                 }
                 
                 
                 List{
-                    //                    ForEach(0...30, id: \.self) {e in
-                    //
-                    //                        Text("滋奇 \(e)")
-//                                                .listRowSeparator(.hidden)
-//                                                .listRowBackground(
-//                                                    RoundedRectangle(cornerRadius: 50)
-//                                                        .background(.clear)
-//                                                        .foregroundColor(Color.BackgroundColor)
-//                                                        .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
-//
-//                                                )
-                    //                            .padding()
-                    //                            .swipeActions(edge:.leading) {
-                    //                                Button {
-                    //
-                    //                                } label: {
-                    //                                    Image(systemName: "heart.fill")
-                    //                                        .modifier(systemImageModifier(font: .largeTitle, forgroundColor: .orange, backgroundColor: .clear, renderingMode: .multicolor))
-                    //                                }
-                    //                                .tint(.clear)
-                    //                                .clipShape(Circle())
-                    //
-                    //
-                    //
-                    //                            }
+
 
 
                     NavigationLink {
-
+                        CanListView()
                     }label: {
                         HStack {
                             Image(systemName:"archivebox.fill")
@@ -105,59 +79,12 @@ struct Home: View {
 
 
 
-
-
-//                    Section("按肉分类"){
-//                        NavigationLink {
-//
-//                        }label: {
-//                            Text("🐔 鸡肉罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//
-//                        NavigationLink {
-//
-//                        }label: {
-//                            Text("🦆 鸭肉罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//
-//                        }label: {
-//                            Text("🐮 牛肉罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//
-//                        }label: {
-//                            Text("🐰 兔肉罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//
-//                        }label: {
-//                            Text("🦌 鹿肉罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                    }
-
                     Section("按国家分类"){
 
 
 
                         ForEach(countries, id:\.self) { country in
                             NavigationLink {
-//                                Brandlist
                                 BrandListView(country: country)
                             }label: {
                                 Text("\(country)罐头")

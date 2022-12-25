@@ -26,28 +26,7 @@ struct BrandListView: View {
     @State private var filteredCans = [CannedFood]()
     @State private var brands = [String]()
     @State private var showDeleteAlert = false
-//
-//    init(){
-//        brandList = [brand1, brand2, brand3]
-//
-//    }
-//
 
-    
-    func deleteCan(at offsets: IndexSet) {
-        for offset in offsets {
-            let can = filteredCans[offset]
-            moc.delete(can)
-        }
-        try? moc.save()
-        filteredCans = cans.filter { $0.country == country}
-        brands = []
-        for can in filteredCans {
-            brands.append(can.brand ?? "none")
-        }
-        brands = Array(Set(brands))
-
-    }
     
     var body: some View {
         
@@ -79,7 +58,7 @@ struct BrandListView: View {
                                 
                                 Spacer()
                                 
-                                Text(String(format:"%.1f g", can.weight))
+                                Text(String(format:"%.1f 元", can.price))
                                     .modifier(capsuleTextModifier(textSize: 12, weight: .bold, color: .cyan))
                                 
                                 
@@ -94,34 +73,6 @@ struct BrandListView: View {
                 
             }
             
-//            .onDelete(perform: deleteCan(at:))
-            
-//            ForEach(brandList) { menuItem in
-//
-//                Section(header:
-//                    HStack {
-//
-//                        Text(menuItem.name)
-//                        .font(.headline)
-//                            .fontWeight(.heavy)
-//
-//
-//                    }
-//                    .padding(.vertical)
-//
-//                ) {
-//                    OutlineGroup(menuItem.cans ?? [Brand](), children: \.cans) {  item in
-//                        NavigationLink {
-//                            CanDetail()
-//                        }label: {
-//                            Text(item.name)
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//
-//                    }
-//
-//                }
-//            }
         }
         .padding([.top], 38)
 
@@ -168,8 +119,3 @@ struct BrandListView: View {
     }
 }
 
-//struct BrandListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BrandListView()
-//    }
-//}
