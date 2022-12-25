@@ -16,12 +16,17 @@ struct Home: View {
     @Environment(\.presentationMode) var presentationMode
     
     
+    @State private var countries = [String]()
+    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().isTranslucent = false
+        
+
+        
     
     }
     var body: some View {
@@ -32,74 +37,76 @@ struct Home: View {
 
                 List {
                     ForEach(cans) { can in
-                        Section(can.brand!) {
+                        Section(can.country ?? "dd") {
                             ForEach(can.meatArray) { meat in
                                 Text(meat.type!)
-                                
+
                             }
-                            
-                            Image(uiImage: UIImage(data: can.pic ?? Data()) ?? UIImage())
+
+//                            Image(uiImage: UIImage(data: can.pic ?? Data()) ?? UIImage())
                         }
-                        
+
                     }
                 }
-//                List{
-//                    //                    ForEach(0...30, id: \.self) {e in
-//                    //
-//                    //                        Text("滋奇 \(e)")
-////                                                .listRowSeparator(.hidden)
-////                                                .listRowBackground(
-////                                                    RoundedRectangle(cornerRadius: 50)
-////                                                        .background(.clear)
-////                                                        .foregroundColor(Color.BackgroundColor)
-////                                                        .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
-////
-////                                                )
-//                    //                            .padding()
-//                    //                            .swipeActions(edge:.leading) {
-//                    //                                Button {
-//                    //
-//                    //                                } label: {
-//                    //                                    Image(systemName: "heart.fill")
-//                    //                                        .modifier(systemImageModifier(font: .largeTitle, forgroundColor: .orange, backgroundColor: .clear, renderingMode: .multicolor))
-//                    //                                }
-//                    //                                .tint(.clear)
-//                    //                                .clipShape(Circle())
-//                    //
-//                    //
-//                    //
-//                    //                            }
+                
+                
+                List{
+                    //                    ForEach(0...30, id: \.self) {e in
+                    //
+                    //                        Text("滋奇 \(e)")
+//                                                .listRowSeparator(.hidden)
+//                                                .listRowBackground(
+//                                                    RoundedRectangle(cornerRadius: 50)
+//                                                        .background(.clear)
+//                                                        .foregroundColor(Color.BackgroundColor)
+//                                                        .padding(EdgeInsets(top: 8 , leading: 0, bottom: 8, trailing: 0))
 //
-//
-//                    NavigationLink {
-//
-//                    }label: {
-//                        HStack {
-//                            Image(systemName:"archivebox.fill")
-//                                .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
-//                            Text("所有罐头")
-//                        }
-//                        .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//
-//                    }
-//                    .modifier(listViewCellModifier())
-//
-//                    NavigationLink {
-//
-//                    }label: {
-//                        HStack {
-//                            Image(systemName:"heart.fill")
-//                                .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
-//                            Text("我的收藏")
-//                        }
-//                        .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                    }
-//                    .modifier(listViewCellModifier())
-//
-//
-//
-//
-//
+//                                                )
+                    //                            .padding()
+                    //                            .swipeActions(edge:.leading) {
+                    //                                Button {
+                    //
+                    //                                } label: {
+                    //                                    Image(systemName: "heart.fill")
+                    //                                        .modifier(systemImageModifier(font: .largeTitle, forgroundColor: .orange, backgroundColor: .clear, renderingMode: .multicolor))
+                    //                                }
+                    //                                .tint(.clear)
+                    //                                .clipShape(Circle())
+                    //
+                    //
+                    //
+                    //                            }
+
+
+                    NavigationLink {
+
+                    }label: {
+                        HStack {
+                            Image(systemName:"archivebox.fill")
+                                .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
+                            Text("所有罐头")
+                        }
+                        .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+
+                    }
+                    .modifier(listViewCellModifier())
+
+                    NavigationLink {
+
+                    }label: {
+                        HStack {
+                            Image(systemName:"heart.fill")
+                                .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
+                            Text("我的收藏")
+                        }
+                        .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+                    }
+                    .modifier(listViewCellModifier())
+
+
+
+
+
 //                    Section("按肉分类"){
 //                        NavigationLink {
 //
@@ -143,60 +150,31 @@ struct Home: View {
 //                        .modifier(listViewCellModifier())
 //
 //                    }
-//
-//                    Section("按国家分类"){
-//
-//                        NavigationLink {
-//                            BrandListView()
-//                        }label: {
-//                            Text("美国罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//
-//                        NavigationLink {
-//                            BrandListView()
-//                        }label: {
-//                            Text("新西兰罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//                            BrandListView()
-//                        }label: {
-//                            Text("澳洲罐头")
-//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//                            BrandListView()
-//                        }label: {
-//                            Text("德国罐头")
-//                            .padding(EdgeInsets(top: 17, leading: 4, bottom: 17, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                        NavigationLink {
-//                            BrandListView()
-//                        }label: {
-//                            Text("英国罐头")
-//                            .padding(EdgeInsets(top: 17, leading: 4, bottom: 17, trailing: 4))
-//                        }
-//                        .modifier(listViewCellModifier())
-//
-//                    }
-//
-//
-//
-//
-//
-//                }
-//
-//
-//
+
+                    Section("按国家分类"){
+
+
+
+                        ForEach(countries, id:\.self) { country in
+                            NavigationLink {
+//                                Brandlist
+                                BrandListView(country: country)
+                            }label: {
+                                Text("\(country)罐头")
+                                .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+                            }
+                            .modifier(listViewCellModifier())
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+
                 HStack {
                     Spacer()
                     VStack{
@@ -217,7 +195,15 @@ struct Home: View {
 
                         }
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 24))
-                        .sheet(isPresented: $showingAdditionSheet) {
+                        .sheet(isPresented: $showingAdditionSheet, onDismiss: {
+                            self.countries = []
+                            
+                            for can in cans {
+                                self.countries.append(can.country ?? "未知")
+                            }
+                            
+                            countries = Array(Set(countries))
+                        }) {
                             if #available(iOS 16.0, *) {
                                 AddCan()
                                     .presentationDetents([.medium, .large])
@@ -235,10 +221,15 @@ struct Home: View {
                 .navigationTitle("My Cans")
                 .navigationBarHidden(true)
                 .onAppear{
-
+                    for can in cans {
+                        self.countries.append(can.country ?? "未知")
+                    }
+                    
+                    countries = Array(Set(countries))
                 }
             }
         }
+
 
     }
     

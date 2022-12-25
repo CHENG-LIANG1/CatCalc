@@ -17,6 +17,7 @@
 		D499DE4729556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */; };
 		D499DE4829556BCD0019FDE0 /* Meat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */; };
 		D499DE4929556BCD0019FDE0 /* Meat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4529556BCD0019FDE0 /* Meat+CoreDataProperties.swift */; };
+		D499DE4B295580400019FDE0 /* SelectCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4A295580400019FDE0 /* SelectCountry.swift */; };
 		D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F47292CFFC9003B8BC3 /* Protain.swift */; };
 		D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F49292D041B003B8BC3 /* Home.swift */; };
 		D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F4C292D0931003B8BC3 /* Can.swift */; };
@@ -45,6 +46,7 @@
 		D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CannedFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meat+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D499DE4529556BCD0019FDE0 /* Meat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meat+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D499DE4A295580400019FDE0 /* SelectCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountry.swift; sourceTree = "<group>"; };
 		D49D5F47292CFFC9003B8BC3 /* Protain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protain.swift; sourceTree = "<group>"; };
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
 				D4D851122944A9D600418D2E /* AddCan.swift */,
 				D4D851182945C5BD00418D2E /* SelectView.swift */,
+				D499DE4A295580400019FDE0 /* SelectCountry.swift */,
 				D4D8511A2945DA8700418D2E /* SelectDate.swift */,
 				D4D8511C2946301000418D2E /* BrandListView.swift */,
 				D4D8511E2947764100418D2E /* CanDetail.swift */,
@@ -242,6 +245,7 @@
 				D4D851172944AF2000418D2E /* Helper.swift in Sources */,
 				D4D851132944A9D600418D2E /* AddCan.swift in Sources */,
 				D43AABA1291F555400C7F3EC /* ContentView.swift in Sources */,
+				D499DE4B295580400019FDE0 /* SelectCountry.swift in Sources */,
 				D4D8511D2946301000418D2E /* BrandListView.swift in Sources */,
 				D43AABAF291F572700C7F3EC /* ColorExt.swift in Sources */,
 				D4D851192945C5BD00418D2E /* SelectView.swift in Sources */,

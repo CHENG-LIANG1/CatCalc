@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct SelectView: View {
+struct SelectCountry: View {
     var selectionList: [String]
     @Environment(\.dismiss) var dismiss
-    @Binding var selectedItems: [String]
+    @Binding var selectedItem: String
     var body: some View {
         
         ZStack {
@@ -18,17 +18,11 @@ struct SelectView: View {
             
             List {
                 ForEach(selectionList, id:\.self) { item in
-                    SelectionCell(selection: item, selected: $selectedItems)
+                    CountryCell(selection: item, selected: $selectedItem)
                         .onTapGesture {
-                            if selectedItems.contains(item) {
-                                selectedItems.remove(at: selectedItems.firstIndex(of: item)!)
-                            } else {
-                                selectedItems.append(item)
-                            }
-                            
-                        
+                            selectedItem = item
                             Helper.viberate(feedbackStyle: .heavy)
-    //                        dismiss()
+                            dismiss()
                         }
                         .listRowSeparator(.hidden)
                         .listRowBackground(
@@ -41,37 +35,15 @@ struct SelectView: View {
             }
 
             
-//            VStack {
-//                HStack {
-//
-//                    Spacer()
-//
-//                    Button{
-//                        Helper.viberate(feedbackStyle: .heavy)
-//
-//                        dismiss()
-//                    }label: {
-//                        Text("添加")
-//                            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-//                        .background(.cyan)
-//                    }
-//                    .foregroundColor(.white)
-//                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-//                    .cornerRadius(5, corners: .allCorners)
-//
-//                }
-//                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 8 ))
-//                Spacer()
-//            }
         }
         
 
     }
 }
 
-struct SelectionCell: View {
+struct CountryCell: View {
     let selection: String
-    @Binding var selected: [String]
+    @Binding var selected: String
     
     var body: some View {
         HStack {

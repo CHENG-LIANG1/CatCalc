@@ -18,46 +18,55 @@ struct Brand: Identifiable {
 struct BrandListView: View {
     @Environment(\.dismiss) var dismiss
     
-    let brand1 = Brand(name: "滋奇", cans: [Brand(name: "Can 1"), Brand(name: "Can 2"), Brand(name: "Can 3")])
-    let brand2 = Brand(name: "滋奇", cans: [Brand(name: "Can 1"), Brand(name: "Can 2"), Brand(name: "Can 3")])
-    let brand3 = Brand(name: "滋奇", cans: [Brand(name: "Can 1"), Brand(name: "Can 2"), Brand(name: "Can 3")])
-    let brandList: [Brand]
+    var country: String
     
-    init(){
-        brandList = [brand1, brand2, brand3]
-    }
+    @FetchRequest(sortDescriptors: []) var cans: FetchedResults<CannedFood>
+        
     
+    @State private var filteredCans = [CannedFood]()
+//
+//    init(){
+//        brandList = [brand1, brand2, brand3]
+//
+//    }
+//
 
     
     var body: some View {
         
         List {
-            ForEach(brandList) { menuItem in
-
-                Section(header:
-                    HStack {
-
-                        Text(menuItem.name)
-                        .font(.headline)
-                            .fontWeight(.heavy)
-
-
-                    }
-                    .padding(.vertical)
-
-                ) {
-                    OutlineGroup(menuItem.cans ?? [Brand](), children: \.cans) {  item in
-                        NavigationLink {
-                            CanDetail()
-                        }label: {
-                            Text(item.name)
-                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
-                        }
-                   
-                    }
-
-                }
+            
+            ForEach(filteredCans) { can in
+                Text(can.brand!)
+                
             }
+            
+//            ForEach(brandList) { menuItem in
+//
+//                Section(header:
+//                    HStack {
+//
+//                        Text(menuItem.name)
+//                        .font(.headline)
+//                            .fontWeight(.heavy)
+//
+//
+//                    }
+//                    .padding(.vertical)
+//
+//                ) {
+//                    OutlineGroup(menuItem.cans ?? [Brand](), children: \.cans) {  item in
+//                        NavigationLink {
+//                            CanDetail()
+//                        }label: {
+//                            Text(item.name)
+//                            .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
+//                        }
+//
+//                    }
+//
+//                }
+//            }
         }
         .padding([.top], 38)
 
@@ -83,6 +92,10 @@ struct BrandListView: View {
                            }
                        )
         .navigationBarTitle("美国罐头")
+        .onAppear {
+            filteredCans = cans.filter { $0.country == country}
+        }
+        
 
  
 
@@ -94,8 +107,8 @@ struct BrandListView: View {
     }
 }
 
-struct BrandListView_Previews: PreviewProvider {
-    static var previews: some View {
-        BrandListView()
-    }
-}
+//struct BrandListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BrandListView()
+//    }
+//}

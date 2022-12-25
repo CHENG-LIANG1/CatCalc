@@ -16,7 +16,7 @@ struct AddCan: View {
     @State private var showDatePicker = false
 
     @State private var image = UIImage()
-    @State private var selectedCountry = ["国家"]
+    @State private var selectedCountry = "国家"
     @State private var selectedMeat = [String]()
     @State private var selectedDate = Date.now
     
@@ -60,7 +60,7 @@ struct AddCan: View {
         let canned = CannedFood(context: moc)
         canned.brand = brand
         canned.price = Float(price)
-        canned.country = country
+        canned.country = selectedCountry
         
         canned.pic = image.pngData()
         
@@ -128,7 +128,7 @@ struct AddCan: View {
                             }
 
                             HStack {
-                                Text(selectedCountry[0])
+                                Text(selectedCountry)
                                 Image(systemName: "chevron.compact.right")
                                     .font(.system(size: 14, weight: .bold))
                             }
@@ -240,7 +240,7 @@ struct AddCan: View {
         }
         .sheet(isPresented: $showCountry) {
             if #available(iOS 16.0, *) {
-                SelectView(selectionList: contries, selectedItems: $selectedCountry)
+                SelectCountry(selectionList: contries, selectedItem: $selectedCountry)
                     .presentationDetents([.medium])
             } else {
                 // Fallback on earlier versions
