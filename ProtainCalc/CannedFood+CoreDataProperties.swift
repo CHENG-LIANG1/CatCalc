@@ -32,6 +32,7 @@ extension CannedFood {
     @NSManaged public var cl: Float
     @NSManaged public var taurine: Float
     @NSManaged public var meatType: NSSet?
+    @NSManaged public var favorited: Int16
     
     public var meatArray: [Meat] {
         let set = meatType as? Set<Meat> ?? []

@@ -53,6 +53,7 @@ struct Home: View {
 
 
                     NavigationLink {
+
                         CanListView()
                     }label: {
                         HStack {
@@ -85,6 +86,7 @@ struct Home: View {
 
                         ForEach(countries, id:\.self) { country in
                             NavigationLink {
+          
                                 BrandListView(country: country)
                             }label: {
                                 Text("\(country)罐头")

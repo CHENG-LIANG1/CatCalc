@@ -265,6 +265,8 @@ struct CanDetail: View {
             
             
         }
+        
+
 
 
             .alert("确认删除？", isPresented: $showingDeleteAlert, actions: {

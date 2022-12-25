@@ -48,9 +48,10 @@ struct CanListView: View {
                             
                             Spacer()
                             
-                            
+
                             Text(String(format:"%.1f 元", can.price))
                                 .modifier(capsuleTextModifier(textSize: 12, weight: .bold, color: .cyan))
+                            
                             
                             
                         }
