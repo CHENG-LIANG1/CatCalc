@@ -92,3 +92,20 @@ public struct PlaceholderStyle: ViewModifier {
         }
     }
 }
+
+struct GradientButtonStyle: ButtonStyle {
+    var favorited: Bool
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(Color.white)
+            .padding()
+            .background(
+                
+                favorited ?
+                LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .leading, endPoint: .trailing) :
+                    LinearGradient(gradient: Gradient(colors: [Color.gray, Color.gray.opacity(0.5)]), startPoint: .leading, endPoint: .trailing)
+            )
+            .cornerRadius(15.0)
+            .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
+    }
+}
