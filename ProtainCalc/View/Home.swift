@@ -17,6 +17,9 @@ struct Home: View {
     
     
     @State private var countries = [String]()
+    @State private var presentFullScreen = false
+    @State private var favCanNum = 0
+    
     
     init() {
         let appearance = UINavigationBarAppearance()
@@ -25,9 +28,6 @@ struct Home: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().isTranslucent = false
         
-
-        
-    
     }
     var body: some View {
 
@@ -60,6 +60,9 @@ struct Home: View {
                             Image(systemName:"archivebox.fill")
                                 .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
                             Text("所有罐头")
+                 
+                            Text("\(cans.count) 个")
+                                .modifier(secondaryTextModifier(textSize: 12, weight: .bold))
                         }
                         .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
 
@@ -73,6 +76,8 @@ struct Home: View {
                             Image(systemName:"heart.fill")
                                 .modifier(systemImageModifier(font:.system(size: 16), forgroundColor: .cyan, backgroundColor: .clear, renderingMode: .multicolor))
                             Text("我的收藏")
+                            Text("\(favCanNum) 个")
+                                .modifier(secondaryTextModifier(textSize: 12, weight: .bold))
                         }
                         .padding(EdgeInsets(top: 16, leading: 4, bottom: 16, trailing: 4))
                     }
@@ -101,7 +106,32 @@ struct Home: View {
 
 
                 }
+                
+                
+            
+                VStack{
+                    Spacer()
+                    Button{
+                        withAnimation {
+                            presentFullScreen.toggle()
+                        }
+                        
+                    }label: {
 
+                        HStack {
+                            Image(systemName: "gearshape.fill")
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundColor(.gray)
+                            Text("设置")
+                                .font(.system(size: 15, weight: .semibold))
+                                .foregroundColor(.gray)
+                            
+                        }
+                        .padding()
+                        
+
+                    }
+                }
 
 
                 HStack {
@@ -147,13 +177,26 @@ struct Home: View {
                 }
 //
 
+                .fullScreenCover(isPresented: $presentFullScreen, content: SettingsView.init)
+
 
                 .navigationTitle("My Cans")
                 .navigationBarHidden(true)
+                .toolbar(content: {
+                    Button {
+                        
+                    }label: {
+                        
+                    }
+                })
                 .onAppear{
                     countries = []
+                    favCanNum = 0
                     for can in cans {
                         self.countries.append(can.country ?? "未知")
+                        if can.favorited == 1{
+                            favCanNum += 1
+                        }
                     }
                     
                     countries = Array(Set(countries))
