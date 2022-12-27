@@ -55,6 +55,7 @@
 		D499DE4E29586DDE0019FDE0 /* CanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanListView.swift; sourceTree = "<group>"; };
 		D499DE50295888310019FDE0 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
 		D499DE52295B16550019FDE0 /* EditNumberValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNumberValue.swift; sourceTree = "<group>"; };
+		D499DE54295B264E0019FDE0 /* ProtainCalc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProtainCalc.entitlements; sourceTree = "<group>"; };
 		D49D5F47292CFFC9003B8BC3 /* Protain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protain.swift; sourceTree = "<group>"; };
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		D43AAB9D291F555400C7F3EC /* ProtainCalc */ = {
 			isa = PBXGroup;
 			children = (
+				D499DE54295B264E0019FDE0 /* ProtainCalc.entitlements */,
 				D499DE4229556BCD0019FDE0 /* CannedFood+CoreDataClass.swift */,
 				D499DE4329556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift */,
 				D499DE4429556BCD0019FDE0 /* Meat+CoreDataClass.swift */,
@@ -150,12 +152,12 @@
 		D49D5F44292CFEC4003B8BC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D499DE4A295580400019FDE0 /* SelectCountry.swift */,
 				D499DE52295B16550019FDE0 /* EditNumberValue.swift */,
 				D49D5F47292CFFC9003B8BC3 /* Protain.swift */,
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
 				D4D851122944A9D600418D2E /* AddCan.swift */,
 				D4D851182945C5BD00418D2E /* SelectView.swift */,
-				D499DE4A295580400019FDE0 /* SelectCountry.swift */,
 				D4D8511A2945DA8700418D2E /* SelectDate.swift */,
 				D4D8511C2946301000418D2E /* BrandListView.swift */,
 				D499DE4E29586DDE0019FDE0 /* CanListView.swift */,
@@ -404,10 +406,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ProtainCalc/ProtainCalc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProtainCalc/Preview Content\"";
-				DEVELOPMENT_TEAM = AJD7NPWNRX;
+				DEVELOPMENT_TEAM = 3QDWFU64TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "My Cans";
@@ -438,10 +441,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ProtainCalc/ProtainCalc.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProtainCalc/Preview Content\"";
-				DEVELOPMENT_TEAM = AJD7NPWNRX;
+				DEVELOPMENT_TEAM = 3QDWFU64TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "My Cans";

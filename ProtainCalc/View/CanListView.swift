@@ -119,7 +119,7 @@ struct CanListView: View {
             })
 
             .onAppear {
-                sortRule = "价格"
+                sortRule = "价格升序"
                 brands = []
                 
                 for can in cans {

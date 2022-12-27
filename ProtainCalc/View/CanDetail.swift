@@ -278,7 +278,7 @@ struct CanDetail: View {
 
                 
                 Text(String(format:"水分\n%.2f%%", can.water))
-                    .modifier(rectangleModifier(textSize: 20, weight: .bold, color: .cyan, width: screenWidth - 80, height:  (screenWidth - 48) / 2))
+                    .modifier(rectangleModifier(textSize: 20, weight: .bold, color: .cyan, width: screenWidth - 32, height:  (screenWidth - 48) / 2))
                     .multilineTextAlignment(.center)
                     .tint(.clear)
                     .padding([.bottom], 16)
