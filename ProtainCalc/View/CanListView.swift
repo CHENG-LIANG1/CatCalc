@@ -20,7 +20,7 @@ struct CanListView: View {
 
     @State private var sortedCans = [CannedFood]()
     
-    @State private var sortRule = "价格升序"
+    @State private var sortRule = ""
     
     var body: some View {
         
@@ -119,6 +119,7 @@ struct CanListView: View {
             })
 
             .onAppear {
+                sortRule = "价格"
                 brands = []
                 
                 for can in cans {

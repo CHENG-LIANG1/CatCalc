@@ -20,11 +20,13 @@ struct FavListView: View {
 
     @State private var sortedCans = [CannedFood]()
     
-    @State private var sortRule = "价格升序"
+    @State private var sortRule = ""
+    
+    @State private var favedCans = [CannedFood]()
     
     var body: some View {
         
-        if cans.isEmpty {
+        if favedCans.isEmpty {
             Text("暂无罐头")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden()
@@ -106,7 +108,7 @@ struct FavListView: View {
                                    }
                                }
                            )
-            .navigationBarTitle("所有罐头")
+            .navigationBarTitle("我的收藏")
             .toolbar(content: {
                 Menu("排序") {
                     Button("价格降序", action: sortByPriceDSC)
@@ -119,14 +121,26 @@ struct FavListView: View {
             })
 
             .onAppear {
+                sortRule = "价格升序"
                 brands = []
                 
+                
+                favedCans = []
                 for can in cans {
+                    if can.favorited == 1 {
+                        favedCans.append(can)
+                    }
+                    
+                 
+                }
+                
+                for can in favedCans {
                     brands.append(can.brand ?? "none")
                 }
+                
                 brands = Array(Set(brands))
                 
-                sortedCans = cans.sorted {
+                sortedCans = favedCans.sorted {
                     $0.price < $1.price
                 }
             }

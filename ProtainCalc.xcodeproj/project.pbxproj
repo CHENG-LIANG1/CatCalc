@@ -21,6 +21,7 @@
 		D499DE4D2958313F0019FDE0 /* textModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4C2958313F0019FDE0 /* textModifer.swift */; };
 		D499DE4F29586DDE0019FDE0 /* CanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE4E29586DDE0019FDE0 /* CanListView.swift */; };
 		D499DE51295888310019FDE0 /* FavListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE50295888310019FDE0 /* FavListView.swift */; };
+		D499DE53295B16550019FDE0 /* EditNumberValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D499DE52295B16550019FDE0 /* EditNumberValue.swift */; };
 		D49D5F48292CFFC9003B8BC3 /* Protain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F47292CFFC9003B8BC3 /* Protain.swift */; };
 		D49D5F4A292D041B003B8BC3 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F49292D041B003B8BC3 /* Home.swift */; };
 		D49D5F4D292D0931003B8BC3 /* Can.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D5F4C292D0931003B8BC3 /* Can.swift */; };
@@ -53,6 +54,7 @@
 		D499DE4C2958313F0019FDE0 /* textModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textModifer.swift; sourceTree = "<group>"; };
 		D499DE4E29586DDE0019FDE0 /* CanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanListView.swift; sourceTree = "<group>"; };
 		D499DE50295888310019FDE0 /* FavListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavListView.swift; sourceTree = "<group>"; };
+		D499DE52295B16550019FDE0 /* EditNumberValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNumberValue.swift; sourceTree = "<group>"; };
 		D49D5F47292CFFC9003B8BC3 /* Protain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protain.swift; sourceTree = "<group>"; };
 		D49D5F49292D041B003B8BC3 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D49D5F4C292D0931003B8BC3 /* Can.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Can.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		D49D5F44292CFEC4003B8BC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D499DE52295B16550019FDE0 /* EditNumberValue.swift */,
 				D49D5F47292CFFC9003B8BC3 /* Protain.swift */,
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
 				D4D851122944A9D600418D2E /* AddCan.swift */,
@@ -268,6 +271,7 @@
 				D499DE4829556BCD0019FDE0 /* Meat+CoreDataClass.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
 				D499DE51295888310019FDE0 /* FavListView.swift in Sources */,
+				D499DE53295B16550019FDE0 /* EditNumberValue.swift in Sources */,
 				D499DE4729556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift in Sources */,
 				D4D8510529446CB300418D2E /* ViewExt.swift in Sources */,
 				D4D8510F2944A28800418D2E /* CatFood.xcdatamodeld in Sources */,

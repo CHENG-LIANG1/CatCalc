@@ -15,6 +15,7 @@ struct CanDetail: View {
     var can: CannedFood
     
     @State private var showingDeleteAlert = false
+    @State private var showingEditProtainSheet = false
 
     @State private var favorited = false
 
@@ -25,6 +26,10 @@ struct CanDetail: View {
 
     private let numberFormatter = NumberFormatter()
     private let dateFormatter = DateFormatter()
+    
+    @State private var protain: Float = 0.0
+    @Environment(\.scenePhase) var scenePhase
+
     
     var screenWidth = UIScreen.main.bounds.width
     
@@ -87,13 +92,12 @@ struct CanDetail: View {
                             }
                             .frame(height: 110)
              
-                            Spacer()
+                         
                             
                             Button(action: {
                                 Helper.viberate(feedbackStyle: .heavy)
                                 favorited.toggle()
-        
-      
+
                         
                             }) {
                                 Image(systemName: "heart.fill")
@@ -145,15 +149,9 @@ struct CanDetail: View {
                 VStack {
               
                     HStack {
-                        Text(String(format:"粗蛋白质\n%.2f%%", can.protain))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
-                        
-                        Spacer()
-                        
+                  
                         ZStack {
-                            Text(String(format:"真蛋白质\n%.2f%%", calculateNetValue(value: can.protain)))
+                            Text(String(format:"粗蛋白质\n%.2f%%", protain))
                                 .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
                                 .multilineTextAlignment(.center)
                                 .tint(.clear)
@@ -162,11 +160,26 @@ struct CanDetail: View {
                                 Spacer()
                                 HStack {
                                     Spacer()
-                                    Text("Dick")
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
                                         .padding()
+                       
                                 }
                             }
                         }
+                        .onTapGesture {
+                            showingEditProtainSheet.toggle()
+                        }
+                        
+                        Spacer()
+                        
+                        Text(String(format:"真蛋白质\n%.2f%%", calculateNetValue(value: calculateNetValue(value: protain))))
+                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
+                            .multilineTextAlignment(.center)
+                            .tint(.clear)
+                        
+
                         
       
                     }
@@ -285,6 +298,8 @@ struct CanDetail: View {
                 })
                 
                 favorited = can.favorited == 1
+                
+                protain = can.protain
     
             }
 
@@ -292,6 +307,19 @@ struct CanDetail: View {
             
             
         }
+        .sheet(isPresented: $showingEditProtainSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入粗蛋白质", value: $protain)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
 
 
 
@@ -320,12 +348,18 @@ struct CanDetail: View {
             })
         
             .onDisappear {
-                if favorited {
-                    unfavorite()
-                }else  {
-                    favorite()
-                }
+                saveValues()
             }
+            .onChange(of: scenePhase) { newPhase in
+                 if newPhase == .active {
+                     print("Active")
+                 } else if newPhase == .inactive {
+                     
+                     print("Inactive")
+                 } else if newPhase == .background {
+                     saveValues()
+                 }
+             }
         
         
         
@@ -358,6 +392,9 @@ struct CanDetail: View {
     }
     
     
+    
+    
+    
     func delete(){
         showingDeleteAlert = true
     }
@@ -376,6 +413,18 @@ struct CanDetail: View {
             can.favorited = 0
             try? moc.save()
         }
+    }
+    
+    func saveValues() {
+        if favorited {
+            unfavorite()
+        }else  {
+            favorite()
+        }
+        
+        
+        can.protain = protain
+        try? moc.save()
     }
     
     func deleteCan() {

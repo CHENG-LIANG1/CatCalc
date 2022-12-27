@@ -17,5 +17,14 @@ struct Helper {
     static func viberate(feedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle) {
         UIImpactFeedbackGenerator(style: feedbackStyle).impactOccurred()
     }
+    
+    static func getNumberFormatter() -> NumberFormatter {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.zeroSymbol = ""
+        
+        return numberFormatter
+    }
 
 }
