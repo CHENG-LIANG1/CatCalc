@@ -52,7 +52,7 @@ struct CanDetail: View {
                                 Image(uiImage: image)
                                     .resizable()
                                     .cornerRadius(10)
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 110, height: 110)
 
                                 
                                 if  CGSizeEqualToSize(image.size, CGSizeZero) {
@@ -85,18 +85,20 @@ struct CanDetail: View {
 
                             
                             }
-                            .frame(height: 100)
+                            .frame(height: 110)
              
                             Spacer()
                             
                             Button(action: {
+                                Helper.viberate(feedbackStyle: .heavy)
                                 favorited.toggle()
+        
       
                         
                             }) {
                                 Image(systemName: "heart.fill")
                                     .font(.system(size: 24))
-                                    .frame(height: 70)
+                                    .frame(height: 72)
                      
                             }
                             .padding([.leading])
@@ -292,6 +294,7 @@ struct CanDetail: View {
         }
 
 
+
         
 
 
@@ -315,6 +318,14 @@ struct CanDetail: View {
                 
 
             })
+        
+            .onDisappear {
+                if favorited {
+                    unfavorite()
+                }else  {
+                    favorite()
+                }
+            }
         
         
         
@@ -352,18 +363,19 @@ struct CanDetail: View {
     }
     
     func favorite(){
-        if can.favorited == 0 {
-            moc.performAndWait {
-                can.favorited = 1
-                try? moc.save()
-            }
-        }else {
-            moc.performAndWait {
-                can.favorited = 0
-                try? moc.save()
-            }
+        
+        moc.performAndWait {
+            can.favorited = 1
+            try? moc.save()
         }
 
+    }
+    
+    func unfavorite(){
+        moc.performAndWait {
+            can.favorited = 0
+            try? moc.save()
+        }
     }
     
     func deleteCan() {
