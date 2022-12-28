@@ -15,6 +15,7 @@ struct defaultTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: textSize, weight: weight, design: .rounded))
+            .foregroundColor(Color.TextColorPrimary)
             
     }
 }

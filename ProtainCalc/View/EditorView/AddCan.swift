@@ -117,7 +117,7 @@ struct AddCan: View {
                         ZStack{
                             Image(uiImage: image)
                                 .resizable()
-                                .cornerRadius(10)
+                                .cornerRadius(100)
                                 .frame(width: 100, height: 100)
         
                                 
@@ -499,7 +499,7 @@ struct AddCan: View {
                 }
       
             }
-            
+            .ignoresSafeArea(.keyboard, edges: .bottom)
 
         }
 

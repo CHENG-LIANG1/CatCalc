@@ -98,7 +98,6 @@
 				04F548225C0411DD5114A7F7 /* Pods-ProtainCalc.debug.xcconfig */,
 				EBAD9B544CA77DB247827166 /* Pods-ProtainCalc.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -538,7 +537,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cat.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cat.calculatork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -574,7 +573,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cat.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cat.calculatork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
