@@ -78,7 +78,9 @@ struct largeCubeModifier: ViewModifier {
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
             .frame(width: width, height: width)
             .foregroundColor(.white)
-            .background(color)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.5), Color.blue.opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
             .clipShape(RoundedRectangle(cornerRadius: 10))
             
     }
@@ -99,7 +101,9 @@ struct rectangleModifier: ViewModifier {
             .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
             .frame(width: width, height: height)
             .foregroundColor(.white)
-            .background(color)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.5), Color.blue.opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
             .clipShape(RoundedRectangle(cornerRadius: 10))
             
     }
