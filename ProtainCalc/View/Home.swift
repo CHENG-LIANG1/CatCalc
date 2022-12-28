@@ -115,6 +115,7 @@ struct Home: View {
                         withAnimation {
                             presentFullScreen.toggle()
                         }
+                        Helper.viberate(feedbackStyle: .heavy)
                         
                     }label: {
 

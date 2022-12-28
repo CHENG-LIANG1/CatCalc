@@ -179,6 +179,7 @@ struct SettingsView: View {
                 Spacer()
                 Button {
                     dismiss()
+                    Helper.viberate(feedbackStyle: .heavy)
                 } label: {
                     Text("关闭")
                         .modifier(whiteTextModifier(textSize: 12, weight: .bold))
