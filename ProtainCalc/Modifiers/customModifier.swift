@@ -122,3 +122,18 @@ struct ProfileButtonStyle: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
     }
 }
+
+struct AddButtonStyle: ButtonStyle {
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+
+            .frame(width: 60, height: 60)
+            .foregroundColor(.white)
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.5), Color.blue.opacity(0.5)]), startPoint: .leading, endPoint: .trailing)
+            )
+            .clipShape(Circle())
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+    }
+}

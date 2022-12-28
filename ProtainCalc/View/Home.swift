@@ -143,16 +143,12 @@ struct Home: View {
                             Helper.viberate(feedbackStyle: .heavy)
                         }label: {
 
-                            ZStack {
-                                Color.cyan
-                                Image(systemName: "plus")
-                                    .font(.system(size: 24, weight: .black))
-                                    .tint(Color.white)
-                            }
-                            .frame(width: 60, height: 60)
-                            .clipShape(Circle())
+                            Image(systemName: "plus")
+                                .font(.system(size: 24, weight: .black))
+                                .tint(Color.white)
 
                         }
+                        .buttonStyle(AddButtonStyle())
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 24))
                         .sheet(isPresented: $showingAdditionSheet, onDismiss: {
                             self.countries = []
