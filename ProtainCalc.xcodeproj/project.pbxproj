@@ -37,6 +37,7 @@
 		D4D8511F2947764100418D2E /* CanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8511E2947764100418D2E /* CanDetail.swift */; };
 		FC70DEA2295BF01900F62E84 /* EditStringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC70DEA1295BF01900F62E84 /* EditStringValue.swift */; };
 		FC70DEA4295C171500F62E84 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC70DEA3295C171500F62E84 /* AboutUsView.swift */; };
+		FC70DEA9295C2C0E00F62E84 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC70DEA8295C2C0E00F62E84 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		D4D8511E2947764100418D2E /* CanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanDetail.swift; sourceTree = "<group>"; };
 		FC70DEA1295BF01900F62E84 /* EditStringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStringValue.swift; sourceTree = "<group>"; };
 		FC70DEA3295C171500F62E84 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		FC70DEA8295C2C0E00F62E84 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		D49D5F44292CFEC4003B8BC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FC70DEA7295C2BFC00F62E84 /* WebView */,
 				FC70DEA6295C1C7200F62E84 /* ListView */,
 				FC70DEA5295C1C3F00F62E84 /* EditorView */,
 				D49D5F49292D041B003B8BC3 /* Home.swift */,
@@ -201,6 +204,14 @@
 				D499DE50295888310019FDE0 /* FavListView.swift */,
 			);
 			path = ListView;
+			sourceTree = "<group>";
+		};
+		FC70DEA7295C2BFC00F62E84 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				FC70DEA8295C2C0E00F62E84 /* WebView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 				D499DE4D2958313F0019FDE0 /* textModifer.swift in Sources */,
 				D499DE4829556BCD0019FDE0 /* Meat+CoreDataClass.swift in Sources */,
 				D43AAB9F291F555400C7F3EC /* ProtainCalcApp.swift in Sources */,
+				FC70DEA9295C2C0E00F62E84 /* WebView.swift in Sources */,
 				D499DE51295888310019FDE0 /* FavListView.swift in Sources */,
 				D499DE53295B16550019FDE0 /* EditNumberValue.swift in Sources */,
 				D499DE4729556BCD0019FDE0 /* CannedFood+CoreDataProperties.swift in Sources */,
@@ -430,7 +442,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProtainCalc/Preview Content\"";
-				DEVELOPMENT_TEAM = 3QDWFU64TR;
+				DEVELOPMENT_TEAM = AJD7NPWNRX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "My Cans";
@@ -465,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProtainCalc/Preview Content\"";
-				DEVELOPMENT_TEAM = 3QDWFU64TR;
+				DEVELOPMENT_TEAM = AJD7NPWNRX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "My Cans";

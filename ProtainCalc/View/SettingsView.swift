@@ -29,22 +29,7 @@ struct SettingsView: View {
          image = UIImage(data: decoded) ?? UIImage()
     }
     
-    func generateButton(title: String) -> some View {
-        
-        return HStack {
-            Text(title)
-                .modifier(defaultTextModifier(textSize: 20, weight: .semibold))
-            Spacer()
-            Image(systemName: "chevron.compact.right")
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(.black)
-        }
-        .padding([.leading, .trailing])
-        .cornerRadius(20)
-        .frame(width: screenWidth - 120)
-        .padding()
-
-    }
+ 
     
     
     var body: some View {
@@ -84,7 +69,7 @@ struct SettingsView: View {
                     showNameEditor.toggle()
                     
                 }label: {
-                    generateButton(title: "修改用户名")
+                    Helper.generateButton(title: "修改用户名")
                         
       
                     
@@ -98,7 +83,7 @@ struct SettingsView: View {
                     
                 }label: {
                     
-                    generateButton(title: "修改头像")
+                    Helper.generateButton(title: "修改头像")
         
                     
                 }
@@ -111,12 +96,12 @@ struct SettingsView: View {
                     
                 }label: {
                     
-                    generateButton(title: "关于 My Cans")
+                    Helper.generateButton(title: "关于 My Cans")
                 }
                 .foregroundColor(.black)
                 .buttonStyle(ProfileButtonStyle())
                 
-                
+
 //                Button {
 //                    Helper.viberate(feedbackStyle: .heavy)
 //

@@ -26,5 +26,22 @@ struct Helper {
         
         return numberFormatter
     }
+    
+    static func generateButton(title: String) -> some View {
+        let screenWidth = UIScreen.main.bounds.width
+        return HStack {
+            Text(title)
+                .modifier(defaultTextModifier(textSize: 20, weight: .semibold))
+            Spacer()
+            Image(systemName: "chevron.compact.right")
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(.black)
+        }
+        .padding([.leading, .trailing])
+        .cornerRadius(20)
+        .frame(width: screenWidth - 120)
+        .padding()
+
+    }
 
 }
