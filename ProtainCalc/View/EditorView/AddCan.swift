@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlertToast
 
 
 
@@ -39,6 +40,8 @@ struct AddCan: View {
     @State private var cl: Float = 0.0
     @State private var water: Float = 0.0
     
+    
+    @State private var showToast = false
     
     
     var spacing:CGFloat = 16
@@ -476,13 +479,13 @@ struct AddCan: View {
                     Button{
                         Helper.viberate(feedbackStyle: .heavy)
                         
-                        if selectedCountry == "国家" || selectedMeat == [] || brand == "" || price == 0.0 || weight == 0.0{
-                            showAlert = true
-                        }else {
-                            addCan()
-                            dismiss()
-                        }
-                        
+//                        if selectedCountry == "国家" || selectedMeat == [] || brand == "" || price == 0.0 || weight == 0.0{
+//                            showAlert = true
+//                        }else {
+//                            addCan()
+//                            dismiss()
+//                        }
+                        showToast.toggle()
 
                     }label: {
                         Text("添加")
@@ -500,11 +503,12 @@ struct AddCan: View {
 
         }
 
-        .alert("请输入必填项", isPresented: $showAlert, actions: {
-            Button("OK"){
-                
-            }
-        })
+        .toast(isPresenting: $showToast){
+            AlertToast(displayMode:.banner(.slide), type: .regular, title: "已添加!")
+        }
+        .toast(isPresenting: $showAlert){
+            AlertToast(type: .regular, title: "请输入必填项")
+        }
         
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)

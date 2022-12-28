@@ -43,6 +43,7 @@ struct CanDetail: View {
     @State private var water: Float = 0.0
 
     
+    
     @Environment(\.scenePhase) var scenePhase
 
     
@@ -112,6 +113,13 @@ struct CanDetail: View {
                             Button(action: {
                                 Helper.viberate(feedbackStyle: .heavy)
                                 favorited.toggle()
+                                if favorited {
+                                   
+
+                                } else {
+                                 
+
+                                }
 
                         
                             }) {
@@ -124,7 +132,7 @@ struct CanDetail: View {
                             .buttonStyle(GradientButtonStyle(favorited: favorited))
 
                         }
-                        
+
 
                         HStack {
                             Text(can.date!, style: .date)
