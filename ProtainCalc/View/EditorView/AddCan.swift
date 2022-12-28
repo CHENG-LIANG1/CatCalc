@@ -513,6 +513,7 @@ struct AddCan: View {
             if #available(iOS 16.0, *) {
                 SelectCountry(selectionList: contries, selectedItem: $selectedCountry)
                     .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             } else {
                 // Fallback on earlier versions
             }
@@ -521,6 +522,7 @@ struct AddCan: View {
             if #available(iOS 16.0, *) {
                 SelectView(selectionList: meatTypes, selectedItems: $selectedMeat)
                     .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             } else {
                 // Fallback on earlier versions
             }
@@ -531,6 +533,7 @@ struct AddCan: View {
             if #available(iOS 16.0, *) {
                 SelectDate(date: $selectedDate)
                     .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             } else {
                 // Fallback on earlier versions
             }

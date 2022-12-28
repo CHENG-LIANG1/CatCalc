@@ -16,6 +16,14 @@ struct CanDetail: View {
     
     @State private var showingDeleteAlert = false
     @State private var showingEditProtainSheet = false
+    @State private var showingEditFatSheet = false
+    @State private var showingEditAshSheet = false
+    @State private var showingEditPhosphateSheet = false
+    @State private var showingEditCalciumSheet = false
+    @State private var showingEditClSheet = false
+    @State private var showingEditTaurineSheet = false
+    @State private var showingEditWaterSheet = false
+
 
     @State private var favorited = false
 
@@ -24,10 +32,17 @@ struct CanDetail: View {
     @State private var meatTypes = [String]()
     @State private var didDisappear = false
 
-    private let numberFormatter = NumberFormatter()
-    private let dateFormatter = DateFormatter()
-    
+        
     @State private var protain: Float = 0.0
+    @State private var fat: Float = 0.0
+    @State private var ash: Float = 0.0
+    @State private var calcium: Float = 0.0
+    @State private var phosphate: Float = 0.0
+    @State private var cl: Float = 0.0
+    @State private var taurine: Float = 0.0
+    @State private var water: Float = 0.0
+
+    
     @Environment(\.scenePhase) var scenePhase
 
     
@@ -174,7 +189,11 @@ struct CanDetail: View {
                         
                         Spacer()
                         
-                        Text(String(format:"真蛋白质\n%.2f%%", calculateNetValue(value: calculateNetValue(value: protain))))
+                        VStack {
+                            Text(String(format:"真蛋白质\n%.2f%%", calculateNetValue(value: calculateNetValue(value: protain))))
+                            Text(String(format: "%.2f g", calculateNetValue(value: protain) * can.weight))
+                        }
+                      
                             .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
                             .multilineTextAlignment(.center)
                             .tint(.clear)
@@ -191,14 +210,44 @@ struct CanDetail: View {
                 VStack {
               
                     HStack {
-                        Text(String(format:"粗脂肪\n%.2f%%", can.fat))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
+                        ZStack {
+                            Text(String(format:"粗脂肪\n%.2f%%", fat))
+                                .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
+                                .multilineTextAlignment(.center)
+                                .tint(.clear)
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                       
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            showingEditFatSheet.toggle()
+                        }
+                        
+                        
+                        
+                        
+                        
+
                         
                         Spacer()
                         
-                        Text(String(format:"真脂肪\n%.2f%%", calculateNetValue(value: can.fat)))
+                        
+                        
+                        VStack {
+                            Text(String(format:"真脂肪\n%.2f%%", calculateNetValue(value: fat)))
+                            Text(String(format: "%.2f g", calculateNetValue(value: fat) * can.weight))
+                        }
+                      
+       
                             .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
                             .multilineTextAlignment(.center)
                             .tint(.clear)
@@ -211,14 +260,36 @@ struct CanDetail: View {
                 VStack {
               
                     HStack {
-                        Text(String(format:"粗灰分\n%.2f%%", can.ash))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
+                        
+                        
+                        ZStack {
+                            Text(String(format:"粗灰分\n%.2f%%", ash))
+                                .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
+                                .multilineTextAlignment(.center)
+                                .tint(.clear)
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                       
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            showingEditAshSheet.toggle()
+                        }
+                        
+                        
+
                         
                         Spacer()
                         
-                        Text(String(format:"干物质剂\n%.2f%%", calculateNetValue(value: can.ash)))
+                        Text(String(format:"干物质剂\n%.2f%%", calculateNetValue(value: ash)))
                             .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
                             .multilineTextAlignment(.center)
                             .tint(.clear)
@@ -232,19 +303,61 @@ struct CanDetail: View {
                 VStack {
               
                     HStack {
-                        Text(String(format:"钙\n%.2f%%", can.calcium))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 3))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
+                        
+                        
+                        ZStack {
+                            Text(String(format:"钙\n%.2f%%", calcium))
+                                .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 3))
+                                .multilineTextAlignment(.center)
+                                .tint(.clear)
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding(8)
+                       
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            showingEditCalciumSheet.toggle()
+                        }
+                        
+                        
+ 
                         
                         Spacer()
                         
-                        Text(String(format:"总磷\n%.2f%%", can.phosphate))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 3))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
                         
-                        Text(String(format:"钙磷比\n%.2f%%", can.calcium / can.phosphate))
+                        ZStack {
+                            Text(String(format:"总磷\n%.2f%%", phosphate))
+                                .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 3))
+                                .multilineTextAlignment(.center)
+                                .tint(.clear)
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding(8)
+                       
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            showingEditPhosphateSheet.toggle()
+                        }
+                        
+                        
+                        
+                        Text(String(format:"钙磷比\n%.2f%%", calcium / phosphate))
                             .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 3))
                             .multilineTextAlignment(.center)
                             .tint(.clear)
@@ -259,14 +372,34 @@ struct CanDetail: View {
                 VStack {
               
                     HStack {
-                        Text(String(format:"氯化物\n%.2f%%", can.cl))
-                            .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
-                            .multilineTextAlignment(.center)
-                            .tint(.clear)
+                        ZStack {
+                            Text(String(format:"氯化物\n%.2f%%", cl))
+                                .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
+                                .multilineTextAlignment(.center)
+                                .tint(.clear)
+                            
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "square.and.pencil")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding()
+                       
+                                }
+                            }
+                        }
+                        .onTapGesture {
+                            showingEditClSheet.toggle()
+                        }
+                        
+                        
+                        
                         
                         Spacer()
                         
-                        Text(String(format:"牛磺酸\n%.2f%%", can.taurine))
+                        Text(String(format:"牛磺酸\n%.2f%%", taurine))
                             .modifier(largeCubeModifier(textSize: 20, weight: .bold, color: .cyan, width: (screenWidth - 48) / 2))
                             .multilineTextAlignment(.center)
                             .tint(.clear)
@@ -277,11 +410,33 @@ struct CanDetail: View {
                 }
 
                 
-                Text(String(format:"水分\n%.2f%%", can.water))
-                    .modifier(rectangleModifier(textSize: 20, weight: .bold, color: .cyan, width: screenWidth - 32, height:  (screenWidth - 48) / 2))
-                    .multilineTextAlignment(.center)
-                    .tint(.clear)
-                    .padding([.bottom], 16)
+                ZStack {
+                    Text(String(format:"水分\n%.2f%%", water))
+                        .modifier(rectangleModifier(textSize: 20, weight: .bold, color: .cyan, width: screenWidth - 32, height:  (screenWidth - 48) / 2))
+                        .multilineTextAlignment(.center)
+                        .tint(.clear)
+           
+                    
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Image(systemName: "square.and.pencil")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.white)
+                                .padding(24)
+               
+                        }
+                    }
+                }
+                .padding([.bottom], 16)
+                .onTapGesture {
+                    showingEditWaterSheet.toggle()
+                }
+                
+                
+                
+                
                 
                 
             }
@@ -300,6 +455,14 @@ struct CanDetail: View {
                 favorited = can.favorited == 1
                 
                 protain = can.protain
+                fat = can.fat
+                calcium = can.calcium
+                cl = can.cl
+                phosphate = can.phosphate
+                water = can.water
+                ash = can.ash
+                taurine = can.taurine
+                
     
             }
 
@@ -320,9 +483,102 @@ struct CanDetail: View {
                 // Fallback on earlier versions
             }
         })
+        
+        .sheet(isPresented: $showingEditFatSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入粗脂肪", value: $fat)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        .sheet(isPresented: $showingEditAshSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入粗灰质", value: $ash)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        
+        .sheet(isPresented: $showingEditCalciumSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入钙", value: $calcium)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        
+        .sheet(isPresented: $showingEditPhosphateSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入总磷", value: $phosphate)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        
+        .sheet(isPresented: $showingEditClSheet, content: {
 
-
-
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入氯化物", value: $cl)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        
+        .sheet(isPresented: $showingEditTaurineSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入牛磺酸", value: $taurine)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
+        .sheet(isPresented: $showingEditWaterSheet, content: {
+            
+            
+            if #available(iOS 16.0, *) {
+                
+                EditNumberValue(title: "输入水分", value: $water)
+                    .interactiveDismissDisabled(false)
+                    .presentationDetents([.medium])
+                
+            } else {
+                // Fallback on earlier versions
+            }
+        })
         
 
 
@@ -424,6 +680,15 @@ struct CanDetail: View {
         
         
         can.protain = protain
+        can.fat = fat
+        can.calcium = calcium
+        can.phosphate = phosphate
+        can.water = water
+        can.cl = cl
+        can.ash = ash
+        can.taurine = taurine
+
+        
         try? moc.save()
     }
     

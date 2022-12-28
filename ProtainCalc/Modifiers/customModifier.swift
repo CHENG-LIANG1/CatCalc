@@ -109,3 +109,16 @@ struct GradientButtonStyle: ButtonStyle {
             .scaleEffect(configuration.isPressed ? 0.8 : 1.0)
     }
 }
+
+
+struct ProfileButtonStyle: ButtonStyle {
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.purple.opacity(0.3), Color.orange.opacity(0.2)]), startPoint: .leading, endPoint: .trailing)
+            )
+            .cornerRadius(15.0)
+            .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
+    }
+}

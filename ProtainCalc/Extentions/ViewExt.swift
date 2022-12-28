@@ -35,3 +35,34 @@ extension Double {
         return (self * divisor).rounded() / divisor
     }
 }
+
+extension UserDefaults {
+    func imageArray(forKey key: String) -> [UIImage]? {
+        guard let array = self.array(forKey: key) as? [Data] else {
+            return nil
+        }
+        return array.compactMap() { UIImage(data: $0) }
+    }
+    func set(_ imageArray: [UIImage], forKey key: String) {
+        self.set(imageArray.compactMap({ $0.pngData() }), forKey: key)
+    }
+}
+extension Bundle {
+
+    var appName: String {
+        return infoDictionary?["CFBundleName"] as! String
+    }
+
+    var bundleId: String {
+        return bundleIdentifier!
+    }
+
+    var versionNumber: String {
+        return infoDictionary?["CFBundleShortVersionString"] as! String
+    }
+
+    var buildNumber: String {
+        return infoDictionary?["CFBundleVersion"] as! String
+    }
+
+}

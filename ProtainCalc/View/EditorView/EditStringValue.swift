@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct EditNumberValue: View {
+struct EditStringValue: View {
     var title: String
 
-    @Binding var value: Float
+    @Binding var value: String
 
     
     @Environment(\.dismiss) var dismiss
@@ -19,13 +19,16 @@ struct EditNumberValue: View {
         
         VStack {
             VStack {
-                TextField(title, value: $value, formatter: Helper.getNumberFormatter())
-                    .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .TextColorPrimary, textSize: 16))
+                TextField(title, text:$value)
+                    .frame(height: 48)
+                    .modifier(gradientTextFieldModifier(radius: 10, startColor: .pink.opacity(0.2), endColor: .orange.opacity(0.2), textColor: .TextColorPrimary, textSize: 24))
+           
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                 
                 Spacer()
-            }.padding()
+            }
+            .padding([.top, .leading, .trailing], 24)
             
             VStack{
                 Spacer()
@@ -36,6 +39,7 @@ struct EditNumberValue: View {
               
                         Helper.viberate(feedbackStyle: .heavy)
                 
+                        print(value)
                         dismiss()
              
 

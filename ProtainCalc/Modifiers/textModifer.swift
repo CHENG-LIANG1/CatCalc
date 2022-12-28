@@ -33,6 +33,19 @@ struct secondaryTextModifier: ViewModifier {
     }
 }
 
+struct whiteTextModifier: ViewModifier {
+    var textSize: CGFloat
+    var weight: Font.Weight
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: textSize, weight: weight, design: .rounded))
+            .foregroundColor(.white)
+            
+    }
+}
+
 
 
 struct capsuleTextModifier: ViewModifier {
